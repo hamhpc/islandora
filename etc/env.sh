@@ -27,6 +27,6 @@ export JAVA_OPTS="-Xms1024m -Xmx1024m -XX:MaxPermSize=1200m -Djavax.net.ssl.trus
 #
 #---------------------------------------------
 #
-export PATH=$ISLANDORA_HOME/bin:${HOME}/bin:${JAVA_HOME}/bin:${PATH}
+export PATH=$ISLANDORA_HOME/bin:${ISLANDORA_HOME}/sbin:${HOME}/bin:${JAVA_HOME}/bin:${PATH}
 export LD_LIBRARY_PATH=$ISLANDORA_HOME/lib:$CATALINA_HOME/lib:${HOME}/lib:${LD_LIBRARY_PATH}
 export LOGPATH=${CATALINA_HOME}/logs
