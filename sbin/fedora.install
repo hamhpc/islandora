@@ -69,12 +69,13 @@ cp ../etc/fedora-users.xml ${FEDORA_HOME}/server/config/
 # set up Gsearch
 #
 # wget fgsconfig-basic.properties or modify it
-#cp $SRC_DIR/fgsconfig-basic.properties $FEDORA_HOME/tomcat/webapps/fedoragsearch/FgsConfig/
+# modify the values to reflect this installation with sed
+cp ../etc/fgsconfig-basic.properties $FEDORA_HOME/tomcat/webapps/fedoragsearch/FgsConfig/
 #
 # build config
 #
-#cd $FEDORA_HOME/tomcat/webapps/fedoragsearch/FgsConfig/
-#ant -f fgsconfig-basic.xml
+cd $FEDORA_HOME/tomcat/webapps/fedoragsearch/FgsConfig/
+ant -f fgsconfig-basic.xml
 
 
 #
@@ -91,20 +92,3 @@ cp ../etc/solr-web.xml ${FEDORA_HOME}/tomcat/webapps/solr/WEB-INF/web.xml
 #
 mv $SOLR_HOME/conf/schema.xml $SOLR_HOME/conf/schema.bak
 cp ${FEDORA_HOME}/tomcat/webapps/fedoragsearch/WEB-INF/classes/fgsconfigFinal/index/FgsIndex/conf/schema-3.6.0-for-fgs-2.4.2.xml $SOLR_HOME/conf/schema.xml
-
-#
-# Install Gsearch user
-#
-mv ${FEDORA_HOME}/server/config/fedora-users.xml ${FEDORA_HOME}/server/config/fedora-users.xml-orig
-cp ../etc/fedora-users.xml ${FEDORA_HOME}/server/config/
-
-#
-# set up Gsearch
-#
-# wget fgsconfig-basic.properties or modify it
-#cp $SRC_DIR/fgsconfig-basic.properties $FEDORA_HOME/tomcat/webapps/fedoragsearch/FgsConfig/
-#
-# build config
-#
-#cd $FEDORA_HOME/tomcat/webapps/fedoragsearch/FgsConfig/
-#ant -f fgsconfig-basic.xml
