@@ -30,5 +30,5 @@ fedora.home=FEDORA_HOME_TO_CHANGE
 install.type=custom
 servlet.engine=included
 apim.ssl.required=false
-fedora.admin.pass=FEDORA_ADMIN_TO_CHANGE
+fedora.admin.pass=FEDORA_ADMIN_PASS_TO_CHANGE
 apia.ssl.required=false
