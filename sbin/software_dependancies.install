@@ -56,8 +56,6 @@ do
 	make
 	make install
 	cd $ISLANDORA_PKGS/$PACKAGE_NAME-$PACKAGE_VERSION
-	cp ../Makefile .
-	# Need to edit Makefile for the directories for this install
-	#make install
+	../../sbin/create_package_makefile.sh
 	cd $SRC_DIR
 done
