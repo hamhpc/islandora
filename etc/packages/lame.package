@@ -1,8 +1,8 @@
 #
 ## LAME installation
 #
-PACKAGE_NAME=lame
-PACKAGE_VERSION=3.99.5
-PACKAGE_URL="http://sourceforge.net/projects/lame/files/lame/3.99/lame-3.99.5.tar.gz/download"
-PACKAGE_UNCOMPRESS="tar -zxvf "
-PACKAGE_TARFILE="lame-3.99.5.tar.gz"
+export PACKAGE_NAME=lame
+export PACKAGE_VERSION=3.99.5
+export PACKAGE_URL="http://sourceforge.net/projects/lame/files/lame/3.99/lame-3.99.5.tar.gz/download"
+export PACKAGE_UNCOMPRESS="tar -zxvf "
+export PACKAGE_TARFILE="lame-3.99.5.tar.gz"
