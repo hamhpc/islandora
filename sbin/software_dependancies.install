@@ -57,5 +57,6 @@ do
 	make install
 	cd $ISLANDORA_PKGS/$PACKAGE_NAME-$PACKAGE_VERSION
 	../../sbin/create_package_makefile.sh
+	make install
 	cd $SRC_DIR
 done

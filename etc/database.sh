@@ -12,7 +12,7 @@ export DB_SERVER=localhost			# hostname of the MySQL server
 #
 #---------------------------------------------
 #
-export DRUPAL_ROOT=/var/www/html/collections	# Top level of the drupal web root
+export DRUPAL_ROOT=/var/www/html		# Top level of the drupal web root
 export DRUPAL_DB_NAME="db_name"          	# Drupal database name
 export DRUPAL_DB_USER="db_user"          	# Drupal username for settings.php file
 export DRUPAL_DB_PASS="password"           	# Drupal password for settings.php file
