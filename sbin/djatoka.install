@@ -1,0 +1,30 @@
+#!/bin/bash
+
+#
+# Script to automatically install Drupal, Fedora Commons, and Islandora Modules
+#
+# 1/9/2014 SLY
+
+#
+## Adore Djatoka install
+#
+cd $SRC_DIR
+wget http://sourceforge.net/projects/djatoka/files/latest/download?source=files
+tar -zxvf -C $ISLANDORA_PKGS adore-djatoka-1.1.tar.gz
+cp $ISLANDORA_PKGS/adore-djatoka-1.1/dist/adore-djatoka.war $CATALINA_HOME/webapps/
+# wait for tomcat to pick up the new app
+sleep 30 
+cp $ISLANDORA_PKGS/adore-djatoka-1.1/dist/adore-djatoka-1.1.jar ${FEDORA_HOME}/tomcat/webapps/adore-djatoka/WEB-INF/lib/
+#
+# link Djatoka binaries to /usr/bin
+# needed to do this in order to enable the module for Large Image Collection.
+# Then I in the module for the path I could change it to /opt/islandora/bin/kdu_compress
+#
+ln -s $ISLANDORA_PKGS/adore-djatoka-1.1/bin/Linux-x86-64/kdu_compress /usr/bin/kdu_compress
+ln -s $ISLANDORA_PKGS/adore-djatoka-1.1/bin/Linux-x86-64/kdu_expand /usr/bin/kdu_expand
+
+#
+# install updated tomcat startup for Djatoka
+#
+#mv ${FEDORA_HOME}/tomcat/bin/startup.sh ${FEDORA_HOME}/tomcat/bin/startup.sh-orig
+#cp ${HOME}/src/startup.sh ${FEDORA_HOME}/tomcat/bin/startup.sh
