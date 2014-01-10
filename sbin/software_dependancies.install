@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 
 #
 # Script to install software that are dependancies for the Islandora software stack
@@ -42,13 +42,13 @@ install -m 755 ../src/ffmpeg2theora-0.29.linux64.bin /usr/bin/ffmpeg2theora
 # Source environment
 . ../etc/env.sh
 
-for PACKAGE in `ls ../etc/packages/*.package`
+for PKG in `find ../etc/packages -name "*.package" -print`
 do
-	. $PACKAGE
+	. $PKG
 	wget -P $SRC_DIR $PACKAGE_URL
 	cd $SRC_DIR
 	$PACKAGE_UNCOMPRESS $PACKAGE_TARFILE
-	cd $PACKAGE_NAME-$PACKAGE_VERSION
+	cd $PACKAGE_DIR_UNCOMPRESSED
 	./configure --prefix=$ISLANDORA_PKGS/$PACKAGE_NAME-$PACKAGE_VERSION
 	make
 	make install
@@ -56,4 +56,5 @@ do
 	cp ../Makefile .
 	# Need to edit Makefile for the directories for this install
 	#make install
+	cd $SRC_DIR
 done
