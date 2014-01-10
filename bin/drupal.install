@@ -1,0 +1,18 @@
+#!/bin/bash
+
+#
+# Script to automatically install Drupal, Fedora Commons, and Islandora Modules
+#
+# 1/9/2014 SLY
+
+# Assumptions:
+#
+#  - Databases are created in MySQL and you have DB names, users, and passwords for them. 
+#     ( one for Fedora Commons and one for Drupal )
+
+#
+# Install Drupal
+#
+wget -P $SRC_DIR http://ftp.drupal.org/files/projects/drupal-7.25.tar.gz
+tar -zxvf -C $WEB_ROOT $SRC_DIR/drupal-7.25.tar.gz 
+mv $WEB_ROOT/drupal-7.25 $DRUPAL_ROOT

@@ -1,0 +1,125 @@
+#!/bin/bash
+
+#
+# Script to automatically install Islandora Drupal Modules
+#
+# 1/9/2014 SLY
+
+#
+# Install islandora drupal modules
+#
+wget -P $SRC_DIR http://islandora.ca/sites/default/files/7.x-1.2/islandora-7.x-1.2.zip
+unzip $SRC_DIR/islandora-7.x-1.2.zip -d $SITES_ALL_MODULES
+wget -P $SRC_DIR http://islandora.ca/sites/default/files/7.x-1.2/islandora_solution_pack_audio-7.x-1.2.zip
+unzip $SRC_DIR/islandora_solution_pack_audio-7.x-1.2.zip -d $SITES_ALL_MODULES
+wget -P $SRC_DIR http://islandora.ca/sites/default/files/7.x-1.2/islandora_solution_pack_image-7.x-1.2.zip
+unzip $SRC_DIR/islandora_solution_pack_image-7.x-1.2.zip -d $SITES_ALL_MODULES
+wget -P $SRC_DIR http://islandora.ca/sites/default/files/7.x-1.2/islandora_solution_pack_book-7.x-1.2.zip
+unzip $SRC_DIR/islandora_solution_pack_book-7.x-1.2.zip -d $SITES_ALL_MODULES
+wget -P $SRC_DIR http://islandora.ca/sites/default/files/7.x-1.2/islandora_solution_pack_compound-7.x-1.2.zip
+unzip $SRC_DIR/islandora_solution_pack_compound-7.x-1.2.zip -d $SITES_ALL_MODULES
+wget -P $SRC_DIR http://islandora.ca/sites/default/files/7.x-1.2/islandora_solution_pack_collection-7.x-1.2.zip
+unzip $SRC_DIR/islandora_solution_pack_collection-7.x-1.2.zip -d $SITES_ALL_MODULES
+wget -P $SRC_DIR http://islandora.ca/sites/default/files/7.x-1.2/islandora_solution_pack_large_image-7.x-1.2.zip
+unzip $SRC_DIR/islandora_solution_pack_large_image-7.x-1.2.zip -d $SITES_ALL_MODULES
+wget -P $SRC_DIR http://islandora.ca/sites/default/files/7.x-1.2/islandora_solution_pack_newspaper-7.x-1.2.zip
+unzip $SRC_DIR/islandora_solution_pack_newspaper-7.x-1.2.zip -d $SITES_ALL_MODULES
+wget -P $SRC_DIR http://islandora.ca/sites/default/files/7.x-1.2/islandora_solution_pack_pdf-7.x-1.2.zip
+unzip $SRC_DIR/islandora_solution_pack_pdf-7.x-1.2.zip -d $SITES_ALL_MODULES
+wget -P $SRC_DIR http://islandora.ca/sites/default/files/7.x-1.2/islandora_solution_pack_video-7.x-1.2.zip
+unzip $SRC_DIR/islandora_solution_pack_video-7.x-1.2.zip -d $SITES_ALL_MODULES
+wget -P $SRC_DIR http://islandora.ca/sites/default/files/7.x-1.2/islandora_paged_content-7.x-1.2.zip
+unzip $SRC_DIR/islandora_paged_content-7.x-1.2.zip -d $SITES_ALL_MODULES
+wget -P $SRC_DIR http://islandora.ca/sites/default/files/7.x-1.2/islandora_jwplayer-7.x-1.2.zip
+unzip $SRC_DIR/islandora_jwplayer-7.x-1.2.zip -d $SITES_ALL_MODULES
+wget -P $SRC_DIR http://islandora.ca/sites/default/files/7.x-1.2/objective_forms-7.x-1.2.zip
+unzip $SRC_DIR/objective_forms-7.x-1.2.zip -d $SITES_ALL_MODULES
+wget -P $SRC_DIR http://islandora.ca/sites/default/files/7.x-1.2/php_lib-7.x-1.2.zip
+unzip $SRC_DIR/php_lib-7.x-1.2.zip -d $SITES_ALL_MODULES
+wget -P $SRC_DIR http://islandora.ca/sites/default/files/7.x-1.2/islandora_xml_forms-7.x-1.2.zip
+unzip $SRC_DIR/islandora_xml_forms-7.x-1.2.zip -d $SITES_ALL_MODULES
+wget -P $SRC_DIR http://islandora.ca/sites/default/files/7.x-1.2/islandora_fits-7.x-1.2.zip
+unzip $SRC_DIR/islandora_fits-7.x-1.2.zip -d $SITES_ALL_MODULES
+wget -P $SRC_DIR http://islandora.ca/sites/default/files/7.x-1.2/islandora_ip_embargo-7.x-1.2.zip
+unzip $SRC_DIR/islandora_ip_embargo-7.x-1.2.zip -d $SITES_ALL_MODULES
+wget -P $SRC_DIR http://islandora.ca/sites/default/files/7.x-1.2/islandora_importer-7.x-1.2.zip
+unzip $SRC_DIR/islandora_importer-7.x-1.2.zip -d $SITES_ALL_MODULES
+wget -P $SRC_DIR http://islandora.ca/sites/default/files/7.x-1.2/islandora_book_batch-7.x-1.2.zip
+unzip $SRC_DIR/islandora_book_batch-7.x-1.2.zip -d $SITES_ALL_MODULES
+wget -P $SRC_DIR http://islandora.ca/sites/default/files/7.x-1.2/islandora_bookmark-7.x-1.2.zip
+unzip $SRC_DIR/islandora_bookmark-7.x-1.2.zip -d $SITES_ALL_MODULES
+wget -P $SRC_DIR http://islandora.ca/sites/default/files/7.x-1.2/islandora_oai-7.x-1.2.zip
+unzip $SRC_DIR/islandora_oai-7.x-1.2.zip -d $SITES_ALL_MODULES
+wget -P $SRC_DIR http://islandora.ca/sites/default/files/7.x-1.2/islandora_ocr-7.x-1.2.zip
+unzip $SRC_DIR/islandora_ocr-7.x-1.2.zip -d $SITES_ALL_MODULES
+wget -P $SRC_DIR http://islandora.ca/sites/default/files/7.x-1.2/islandora_marcxml-7.x-1.2.zip
+unzip $SRC_DIR/islandora_marcxml-7.x-1.2.zip -d $SITES_ALL_MODULES
+wget -P $SRC_DIR http://islandora.ca/sites/default/files/7.x-1.2/islandora_openseadragon-7.x-1.2.zip
+unzip $SRC_DIR/islandora_openseadragon-7.x-1.2.zip -d $SITES_ALL_MODULES
+wget -P $SRC_DIR http://islandora.ca/sites/default/files/7.x-1.2/islandora_simple_workflow-7.x-1.2.zip
+unzip $SRC_DIR/islandora_simple_workflow-7.x-1.2.zip -d $SITES_ALL_MODULES
+wget -P $SRC_DIR http://islandora.ca/sites/default/files/7.x-1.2/islandora_internet_archive_bookreader-7.x-1.2.zip
+unzip $SRC_DIR/islandora_internet_archive_bookreader-7.x-1.2.zip -d $SITES_ALL_MODULES
+wget -P $SRC_DIR http://islandora.ca/sites/default/files/7.x-1.2/islandora_solr_search-7.x-1.2.zip
+unzip $SRC_DIR/islandora_solr_search-7.x-1.2.zip -d $SITES_ALL_MODULES
+wget -P $SRC_DIR http://islandora.ca/sites/default/files/7.x-1.2/islandora_solr_views-7.x-1.2.zip
+unzip $SRC_DIR/islandora_solr_views-7.x-1.2.zip -d $SITES_ALL_MODULES
+#
+# Additional Drupal Modules
+#
+wget -P $SRC_DIR http://ftp.drupal.org/files/projects/libraries-7.x-2.1.tar.gz
+unzip $SRC_DIR/libraries-7.x-2.1.tar.gz -d $SITES_ALL_MODULES
+wget -P $SRC_DIR http://ftp.drupal.org/files/projects/imagemagick-7.x-1.0.zip
+unzip $SRC_DIR/imagemagick-7.x-1.0.zip -d $SITES_ALL_MODULES
+## install jwplayer
+## 
+#
+# git repo
+#
+#get a copy of https://github.com/Islandora/tuque put it in $SITES_ALL_LIB
+#
+# get drupal_filter
+#
+wget -P $SRC_DIR http://islandora.ca/sites/default/files/12.1.0/drupal_filter.tar.gz
+tar -zxvf drupal_filter.tar.gz
+mv bin drupal_filter
+#
+# add drupal filter
+#
+cp drupal_filter/fcrepo-drupalauthfilter-3.4.2.jar ${FEDORA_HOME}/tomcat/webapps/fedora/WEB-INF/lib/
+
+#
+# set up jaas.conf 
+#
+mv ${FEDORA_HOME}/server/config/jaas.conf ${FEDORA_HOME}/server/config/jaas.conf-orig
+cp drupal_filter/jaas.conf ${FEDORA_HOME}/server/config/jaas.conf
+
+#
+# install filter config
+#
+cp drupal_filter/filter-drupal.xml ${FEDORA_HOME}/server/config/filter-drupal.xml
+
+#
+# Proxy pass config https://wiki.duraspace.org/pages/viewpage.action?pageId=34658947
+#
+#cat apache-proxy-pass.cfg >> $WEB_ROOT/.htaccess
+#
+# contents of apache-proxy-pass.cfg
+#ProxyRequests Off 
+#ProxyPreserveHost On
+#<Proxy \*> 
+    #Order deny,allow 
+    #Allow from all 
+#</Proxy>
+#ProxyPass /fedora/get http://localhost:8080/fedora/get
+#ProxyPassReverse /fedora/get http://localhost:8080/fedora/get 
+#ProxyPass /fedora/services http://localhost:8080/fedora/services 
+#ProxyPassReverse /fedora/services http://localhost:8080/fedora/services 
+#ProxyPass /fedora/describe http://localhost:8080/fedora/describe 
+#ProxyPassReverse /fedora/describe http://localhost:8080/fedora/describe
+#ProxyPass /iiv http://localhost:8080/iiv
+#ProxyPassReverse /iiv http://localhost:8080/iiv
+#ProxyPass /fedora/risearch http://localhost:8080/fedora/risearch 
+#ProxyPassReverse /fedora/risearch http://localhost:8080/fedora/risearch
+#ProxyPass /adore-djatoka http://localhost:8080/adore-djatoka
+#ProxyPassReverse /adore-djatoka http://localhost:8080/adore-djatoka

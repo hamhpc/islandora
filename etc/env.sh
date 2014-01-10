@@ -1,10 +1,10 @@
 ## Variables
-export FEDORA_HOME=$INSTALL_PREFIX/fedora
+export FEDORA_HOME=/opt/fedora
 export FEDORA_USER=fedora
-export ISLANDORA_HOME=$INSTALL_PREFIX/islandora
+export ISLANDORA_HOME=/opt/islandora
 export ISLANDORA_PKGS=$ISLANDORA_HOME/packages
 export CATALINA_HOME=$FEDORA_HOME/tomcat
-export SOLR_HOME=$INSTALL_PREFIX/solr
+export SOLR_HOME=/opt/solr
 #
 # Java variables
 #
@@ -14,6 +14,6 @@ export JAVA_OPTS="-Xms1024m -Xmx1024m -XX:MaxPermSize=1200m -Djavax.net.ssl.trus
 #
 export FEDORA_START=$CATALINA_HOME/bin/startup.sh
 export FEDORA_STOP=$CATALINA_HOME/bin/shutdown.sh
-export PATH=${ISLANDORA_HOME}/bin:${HOME}/bin:${PATH}:${JAVA_HOME}/bin
-export LD_LIBRARY_PATH=${HOME}/islandora/lib:${HOME}/fedora/tomcat/lib:${HOME}/lib:${LD_LIBRARY_PATH}
+export PATH=$ISLANDORA_HOME/bin:${HOME}/bin:${JAVA_HOME}/bin:${PATH}
+export LD_LIBRARY_PATH=$ISLANDORA_HOME/lib:$CATALINA_HOME/lib:${HOME}/lib:${LD_LIBRARY_PATH}
 export LOGPATH=${CATALINA_HOME}/logs
