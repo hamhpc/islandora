@@ -1,0 +1,6 @@
+#
+## Tesseract installation
+#
+PACKAGE_NAME=tesseract
+PACKAGE_VERSION=3.02.02
+PACKAGE_URL="https://tesseract-ocr.googlecode.com/files/tesseract-ocr-3.02.02.tar.gz"
