@@ -100,6 +100,24 @@ cp drupal_filter/jaas.conf ${FEDORA_HOME}/server/config/jaas.conf
 cp drupal_filter/filter-drupal.xml ${FEDORA_HOME}/server/config/filter-drupal.xml
 
 #
+# Change XACML policies
+#
+#rm ${FEDORA_HOME}/data/fedora-xacml-policies/repository-policies/default/deny-purge-*
+#mkdir ${FEDORA_HOME}/data/fedora-xacml-policies/repository-policies/islandora
+
+#
+# Copy islandora policies
+#
+#cp $WEB_ROOT/sites/all/modules/islandora-7.x-1.2/policies/permit-* ${FEDORA_HOME}/data/fedora-xacml-policies/repository-policies/islandora
+
+#
+# update policy manually
+#
+#echo "Please make sure to update $FEDORA_HOME/data/fedora-xacml-policies/repository-policies/default/deny-apim-if-not-localhost.xml"
+#echo "Add <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">$IP_ADDR</AttributeValue> after the 127.0.0.1 line"
+
+
+#
 # Proxy pass config https://wiki.duraspace.org/pages/viewpage.action?pageId=34658947
 #
 #cat apache-proxy-pass.cfg >> $WEB_ROOT/.htaccess

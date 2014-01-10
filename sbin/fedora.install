@@ -1,7 +1,7 @@
-#!/bin/bash
+#!/bin/bash -x
 
 #
-# Script to automatically install Drupal, Fedora Commons, and Islandora Modules
+# Script to automatically Fedora Commons
 #
 # 1/9/2014 SLY
 
@@ -9,86 +9,73 @@
 #
 #  - Databases are created in MySQL and you have DB names, users, and passwords for them. 
 #     ( one for Fedora Commons and one for Drupal )
+#
+#
+# Source environment
+. ../etc/env.sh
+. ../etc/database.sh
 
+#
+# Variables for script
+#
+install_properties_file="install.properties-fedora"
 #
 # Install Fedora Commons
 #
 ## get software
-wget -N http://downloads.sourceforge.net/fedora-commons/fcrepo-installer-3.5.jar
+wget -N -P $SRC_DIR http://downloads.sourceforge.net/fedora-commons/fcrepo-installer-3.5.jar
+cd $SRC_DIR
 #
 ## create install.properties
-echo "#Install Options" > install.properties
-echo -n "#";date >> install.properties
-echo "keystore.file=included" >> install.properties
-echo "ri.enabled=true" >> install.properties
-echo "messaging.enabled=true" >> install.properties
-echo "apia.auth.required=false" >> install.properties
-echo "database.jdbcDriverClass=com.mysql.jdbc.Driver" >> install.properties
-echo "tomcat.ssl.port=8443" >> install.properties
-echo "ssl.available=true" >> install.properties
-echo "database.jdbcURL=jdbc\:mysql\://$DB_SERVER/$FEDORA_DB_NAME?useUnicode\=true&amp;characterEncoding\=UTF-8&amp;autoReconnect\=true" >> install.properties
-echo "messaging.uri=vm\:(broker\:(tcp\://localhost\:61616))" >> install.properties
-echo "database.password=$FEDORA_DB_PASS" >> install.properties
-echo "database.mysql.driver=included" >> install.properties
-echo "database.username=$FEDORA_DB_USER" >> install.properties
-echo "fesl.authz.enabled=false" >> install.properties
-echo "tomcat.shutdown.port=8005" >> install.properties
-echo "deploy.local.services=true" >> install.properties
-echo "xacml.enabled=true" >> install.properties
-echo "database.mysql.jdbcDriverClass=com.mysql." >> install.propertiesjdbc.Driver
-echo "tomcat.http.port=8080" >> install.properties
-echo "fedora.serverHost=localhost" >> install.properties
-echo "database=mysql" >> install.properties
-echo "database.driver=included" >> install.properties
-echo "fedora.serverContext=fedora" >> install.properties
-echo "llstore.type=akubra-fs" >> install.properties
-echo "tomcat.home=$CATALINA_HOME" >> install.properties
-echo "fesl.authn.enabled=true" >> install.properties
-echo "database.mysql.jdbcURL=jdbc\:mysql\://$DB_HOST/$FEDORA_DB_NAME?useUnicode\=true&amp;characterEncoding\=UTF-8&amp;autoReconnect\=true" >> install.properties
-echo "fedora.home=$FEDORA_HOME" >> install.properties
-echo "install.type=custom" >> install.properties
-echo "servlet.engine=included" >> install.properties
-echo "apim.ssl.required=false" >> install.properties
-echo "fedora.admin.pass=$FEDORA_ADMIN_PASS" >> install.properties
-echo "apia.ssl.required=false" >> install.properties
-echo "" >> install.properties
+#
+cp ../etc/install.properties-fedora $install_properties_file
+sed -i "s/ENTER_DATE/`date`/" $install_properties_file
+sed -i "s/DATABASE_SERVER_TO_CHANGE/$DB_SERVER/g" $install_properties_file
+sed -i "s/DATABASE_NAME_TO_CHANGE/$FEDORA_DB_NAME/g" $install_properties_file
+sed -i "s/DATABASE_PASSWORD_TO_CHANGE/$FEDORA_DB_PASS/g" $install_properties_file
+sed -i "s/DATABASE_USER_TO_CHANGE/$FEDORA_DB_USER/g" $install_properties_file
+sed -i "s/CATALINA_HOME_TO_CHANGE/\/opt\/fedora\/tomcat/g" $install_properties_file
+sed -i "s/FEDORA_HOME_TO_CHANGE/\/opt\/fedora/g" $install_properties_file
+sed -i "s/FEDORA_ADMIN_PASS_TO_CHANGE/$FEDORA_ADMIN_PASS/g" $install_properties_file
 #
 ## Fresh fedora commons install
 #
-/usr/bin/java -jar fcrepo-installer-3.5.jar install.properties
+/usr/bin/java -jar fcrepo-installer-3.5.jar $install_properties_file
 
 # 
 # Start Fedora to get things populated
 #
 $CATALINA_HOME/bin/startup.sh
-sleep 30
+sleep 60
 #
 # Now stop fedora
 #
 pkill java
 #
-# Change XACML policies
-#
-rm ${FEDORA_HOME}/data/fedora-xacml-policies/repository-policies/default/deny-purge-* 
-mkdir ${FEDORA_HOME}/data/fedora-xacml-policies/repository-policies/islandora
-
-#
-# Copy islandora policies
-#
-cp $WEB_ROOT/sites/all/modules/islandora-7.x-1.2/policies/permit-* ${FEDORA_HOME}/data/fedora-xacml-policies/repository-policies/islandora
-
-#
-# update policy manually
-# 
-echo "Please make sure to update $FEDORA_HOME/data/fedora-xacml-policies/repository-policies/default/deny-apim-if-not-localhost.xml"
-echo "Add <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">$IP_ADDR</AttributeValue> after the 127.0.0.1 line"
-
-#
 # install fedora gsearch
 #
 wget -N -P $SRC_DIR  http://downloads.sourceforge.net/fedora-commons/fedoragsearch-2.4.2.zip
+cd $SRC_DIR
 unzip fedoragsearch-2.4.2.zip
 cp fedoragsearch-2.4.2/fedoragsearch.war ${FEDORA_HOME}/tomcat/webapps/
+#
+# Install Gsearch user
+#
+mv ${FEDORA_HOME}/server/config/fedora-users.xml ${FEDORA_HOME}/server/config/fedora-users.xml-orig
+# modify the values to reflect this installation with sed
+cp ../etc/fedora-users.xml ${FEDORA_HOME}/server/config/
+
+#
+# set up Gsearch
+#
+# wget fgsconfig-basic.properties or modify it
+#cp $SRC_DIR/fgsconfig-basic.properties $FEDORA_HOME/tomcat/webapps/fedoragsearch/FgsConfig/
+#
+# build config
+#
+#cd $FEDORA_HOME/tomcat/webapps/fedoragsearch/FgsConfig/
+#ant -f fgsconfig-basic.xml
+
 
 #
 # install Solr
@@ -97,9 +84,8 @@ wget -N -P $SRC_DIR http://archive.apache.org/dist/lucene/solr/3.6.2/apache-solr
 tar -zxvf apache-solr-3.6.2.tgz
 cp apache-solr-3.6.2/example/webapps/solr.war ${FEDORA_HOME}/tomcat/webapps
 cp -r apache-solr-3.6.2/example/solr $SOLR_HOME
-# wget solr-web.xml or modify it
 mv ${FEDORA_HOME}/tomcat/webapps/solr/WEB-INF/web.xml ${FEDORA_HOME}/tomcat/webapps/solr/WEB-INF/web.xml-orig
-cp solr-web.xml ${FEDORA_HOME}/tomcat/webapps/solr/WEB-INF
+cp ../etc/solr-web.xml ${FEDORA_HOME}/tomcat/webapps/solr/WEB-INF/web.xml
 #
 # setup solr schema
 #
@@ -109,17 +95,16 @@ cp ${FEDORA_HOME}/tomcat/webapps/fedoragsearch/WEB-INF/classes/fgsconfigFinal/in
 #
 # Install Gsearch user
 #
-# wget fedora-users.xml or modify it
 mv ${FEDORA_HOME}/server/config/fedora-users.xml ${FEDORA_HOME}/server/config/fedora-users.xml-orig
-cp $SRC_DIR/fedora-users.xml ${FEDORA_HOME}/server/config/
+cp ../etc/fedora-users.xml ${FEDORA_HOME}/server/config/
 
 #
 # set up Gsearch
 #
 # wget fgsconfig-basic.properties or modify it
-cp $SRC_DIR/fgsconfig-basic.properties $FEDORA_HOME/tomcat/webapps/fedoragsearch/FgsConfig/
+#cp $SRC_DIR/fgsconfig-basic.properties $FEDORA_HOME/tomcat/webapps/fedoragsearch/FgsConfig/
 #
 # build config
 #
-cd $FEDORA_HOME/tomcat/webapps/fedoragsearch/FgsConfig/
-ant -f fgsconfig-basic.xml
+#cd $FEDORA_HOME/tomcat/webapps/fedoragsearch/FgsConfig/
+#ant -f fgsconfig-basic.xml
