@@ -42,6 +42,9 @@ install -m 755 ../src/ffmpeg2theora-0.29.linux64.bin /usr/bin/ffmpeg2theora
 # Source environment
 . ../etc/env.sh
 
+#
+# Install dependancy packages in islandora directory tree
+#
 for PKG in `find ../etc/packages -name "*.package" -print`
 do
 	. $PKG
