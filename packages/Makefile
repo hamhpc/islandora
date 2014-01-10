@@ -66,7 +66,8 @@ SBNDIR = ${SBINROOT}/sbin
 # This is where share files should be copied, and their extensions
 SHAREDIR = ${SHAREROOT}/share
 
-install: install-bin install-etc install-include install-info install-lib install-man install-sbin install-share
+#install: install-bin install-etc install-include install-info install-lib install-man install-sbin install-share
+INSTALL_PACKAGE_COMMAND
 
 install-bin:
 	@(linkup () { cd $$1;			\
@@ -180,7 +181,8 @@ install-share:
 	done; cd ..; };				\
 	linkup share ${SHAREDIR};)
 
-uninstall: uninstall-bin uninstall-etc uninstall-include uninstall-info uninstall-lib uninstall-man uninstall-sbin uninstall-share
+#uninstall: uninstall-bin uninstall-etc uninstall-include uninstall-info uninstall-lib uninstall-man uninstall-sbin uninstall-share
+UNINSTALL_PACKAGE_COMMAND
 
 uninstall-bin:
 	@(unlink () { cd $$1;			\
