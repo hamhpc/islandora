@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash
 
 #
 # Script to install software that are dependancies for the Islandora software stack
