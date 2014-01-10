@@ -33,7 +33,7 @@ yum -y install xpdf
 #
 # ffmpeg2theora
 #
-wget -P ../src http://v2v.cc/~j/ffmpeg2theora/ffmpeg2theora-0.29.linux64.bin
+wget -N -P ../src http://v2v.cc/~j/ffmpeg2theora/ffmpeg2theora-0.29.linux64.bin
 install -m 755 ../src/ffmpeg2theora-0.29.linux64.bin /usr/bin/ffmpeg2theora
 #
 # End of Operating System Software Setup
@@ -45,7 +45,7 @@ install -m 755 ../src/ffmpeg2theora-0.29.linux64.bin /usr/bin/ffmpeg2theora
 for PKG in `find ../etc/packages -name "*.package" -print`
 do
 	. $PKG
-	wget -P $SRC_DIR $PACKAGE_URL
+	wget -N -P $SRC_DIR $PACKAGE_URL
 	cd $SRC_DIR
 	$PACKAGE_UNCOMPRESS $PACKAGE_TARFILE
 	cd $PACKAGE_DIR_UNCOMPRESSED

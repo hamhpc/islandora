@@ -14,7 +14,7 @@
 # Install Fedora Commons
 #
 ## get software
-wget http://downloads.sourceforge.net/fedora-commons/fcrepo-installer-3.5.jar
+wget -N http://downloads.sourceforge.net/fedora-commons/fcrepo-installer-3.5.jar
 #
 ## create install.properties
 echo "#Install Options" > install.properties
@@ -86,14 +86,14 @@ echo "Add <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">$IP
 #
 # install fedora gsearch
 #
-wget -P $SRC_DIR  http://downloads.sourceforge.net/fedora-commons/fedoragsearch-2.4.2.zip
+wget -N -P $SRC_DIR  http://downloads.sourceforge.net/fedora-commons/fedoragsearch-2.4.2.zip
 unzip fedoragsearch-2.4.2.zip
 cp fedoragsearch-2.4.2/fedoragsearch.war ${FEDORA_HOME}/tomcat/webapps/
 
 #
 # install Solr
 #
-wget -P $SRC_DIR http://archive.apache.org/dist/lucene/solr/3.6.2/apache-solr-3.6.2.tgz
+wget -N -P $SRC_DIR http://archive.apache.org/dist/lucene/solr/3.6.2/apache-solr-3.6.2.tgz
 tar -zxvf apache-solr-3.6.2.tgz
 cp apache-solr-3.6.2/example/webapps/solr.war ${FEDORA_HOME}/tomcat/webapps
 cp -r apache-solr-3.6.2/example/solr $SOLR_HOME
