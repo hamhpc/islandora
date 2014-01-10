@@ -14,6 +14,6 @@ export JAVA_OPTS="-Xms1024m -Xmx1024m -XX:MaxPermSize=1200m -Djavax.net.ssl.trus
 #
 export FEDORA_START=$CATALINA_HOME/bin/startup.sh
 export FEDORA_STOP=$CATALINA_HOME/bin/shutdown.sh
-export PATH=${HOME}/islandora/bin:${HOME}/bin:${PATH}:${JAVA_HOME}/bin
+export PATH=${ISLANDORA_HOME}/bin:${HOME}/bin:${PATH}:${JAVA_HOME}/bin
 export LD_LIBRARY_PATH=${HOME}/islandora/lib:${HOME}/fedora/tomcat/lib:${HOME}/lib:${LD_LIBRARY_PATH}
 export LOGPATH=${CATALINA_HOME}/logs
