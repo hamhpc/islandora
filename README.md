@@ -1,0 +1,4 @@
+islandora
+=========
+
+Islandora directory structure
