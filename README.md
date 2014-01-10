@@ -1,4 +1,4 @@
-islandora
+Islandora
 =========
 
 Islandora directory structure
