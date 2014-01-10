@@ -6,3 +6,4 @@ export PACKAGE_VERSION=1.0
 export PACKAGE_URL="https://someplace.com/name-1.0.tar.gz"
 export PACKAGE_UNCOMPRESS="tar -zxvf "
 export PACKAGE_TARFILE="name-1.0.tar.gz"
+export PACKAGE_DIR_UNCOMPRESSED=$PACKAGE_NAME-$PACKAGE_VERSION
