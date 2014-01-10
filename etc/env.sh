@@ -8,6 +8,7 @@ export FEDORA_HOME=/opt/fedora
 export FEDORA_USER=fedora
 export ISLANDORA_HOME=/opt/islandora
 export ISLANDORA_PKGS=$ISLANDORA_HOME/packages
+export SRC_DIR=$ISLANDORA_HOME/src
 export CATALINA_HOME=$FEDORA_HOME/tomcat
 export SOLR_HOME=/opt/solr
 export FEDORA_START=$CATALINA_HOME/bin/startup.sh

@@ -33,8 +33,8 @@ yum -y install xpdf
 #
 # ffmpeg2theora
 #
-wget http://v2v.cc/~j/ffmpeg2theora/ffmpeg2theora-0.29.linux64.bin
-install -m 755 ffmpeg2theora-0.29.linux64.bin /usr/bin/ffmpeg2theora
+wget -P ../src http://v2v.cc/~j/ffmpeg2theora/ffmpeg2theora-0.29.linux64.bin
+install -m 755 ../src/ffmpeg2theora-0.29.linux64.bin /usr/bin/ffmpeg2theora
 #
 # End of Operating System Software Setup
 #=======================================================
@@ -46,7 +46,7 @@ install -m 755 ffmpeg2theora-0.29.linux64.bin /usr/bin/ffmpeg2theora
 ## LAME installation
 #
 cd $SRC_DIR
-wget -P $SRC_DIR http://sourceforge.net/projects/lame/files/lame/3.99/lame-3.99.5.tar.gz/download
+wget -P ../src http://sourceforge.net/projects/lame/files/lame/3.99/lame-3.99.5.tar.gz/download
 tar -zxvf lame-3.99.5.tar.gz
 cd lame-3.99.5
 ./configure --prefix=$ISLANDORA_PKGS
@@ -58,28 +58,28 @@ make install
 # above gets symlinked into $ISLANDORA_HOME/bin 
 #
 ## Leptonica installation
-#
-cd $SRC_DIR
-wget -P $SRC_DIR http://www.leptonica.org/source/leptonica-1.69.tar.gz
-tar -zxvf leptonica-1.69.tar.gz
-cd leptonica-1.69
-./configure --prefix=$ISLANDORA_PKGS/leptonica-1.69
-make
-make install
-cd $ISLANDORA_PKGS/leptonica-1.69 
-cp ../Makefile .
-make install
-# above gets symlinked into $ISLANDORA_HOME/bin
-#
-## tesseract install
-#
-cd $SRC_DIR
-wget https://tesseract-ocr.googlecode.com/files/tesseract-ocr-3.02.02.tar.gz
-tar -zxvf tesseract-ocr-3.02.02.tar.gz
-cd tesseract-ocr
-./configure --prefix=$ISLANDORA_PKGS/tesseract-3.02.02
-make 
-make install
-cd $ISLANDORA_PKGS/tesseract-3.02.02
-cp ../Makefile .
-make install
+##
+#cd $SRC_DIR
+#wget -P $SRC_DIR http://www.leptonica.org/source/leptonica-1.69.tar.gz
+#tar -zxvf leptonica-1.69.tar.gz
+#cd leptonica-1.69
+#./configure --prefix=$ISLANDORA_PKGS/leptonica-1.69
+#make
+#make install
+#cd $ISLANDORA_PKGS/leptonica-1.69 
+#cp ../Makefile .
+#make install
+## above gets symlinked into $ISLANDORA_HOME/bin
+##
+### tesseract install
+##
+#cd $SRC_DIR
+#wget https://tesseract-ocr.googlecode.com/files/tesseract-ocr-3.02.02.tar.gz
+#tar -zxvf tesseract-ocr-3.02.02.tar.gz
+#cd tesseract-ocr
+#./configure --prefix=$ISLANDORA_PKGS/tesseract-3.02.02
+#make 
+#make install
+#cd $ISLANDORA_PKGS/tesseract-3.02.02
+#cp ../Makefile .
+#make install
