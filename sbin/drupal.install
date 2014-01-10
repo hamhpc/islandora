@@ -10,9 +10,14 @@
 #  - Databases are created in MySQL and you have DB names, users, and passwords for them. 
 #     ( one for Fedora Commons and one for Drupal )
 
+# Source environment
+. ../etc/env.sh
+. ../etc/database.sh
+
 #
 # Install Drupal
 #
 wget -N -P $SRC_DIR http://ftp.drupal.org/files/projects/drupal-7.25.tar.gz
-tar -zxvf -C $WEB_ROOT $SRC_DIR/drupal-7.25.tar.gz 
-mv $WEB_ROOT/drupal-7.25 $DRUPAL_ROOT
+cd $SRC_DIR
+tar -zxvf drupal-7.25.tar.gz 
+cp -r drupal-7.25 $DRUPAL_ROOT
