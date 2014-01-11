@@ -52,3 +52,7 @@ FEDORA_ADMIN_USER="fedoraAdmin"          # Username for http://localhost:8080/fe
 FEDORA_ADMIN_PASS="F3d0r@Adm1n"          # Password for http://localhost:8080/fedora/admin
 DB_SERVER=localhost
 
+#
+# make src dir
+#
+mkdir -p $SRC_DIR
