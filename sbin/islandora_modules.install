@@ -48,16 +48,18 @@ cp drupal_filter/fcrepo-drupalauthfilter-3.4.2.jar ${FEDORA_HOME}/tomcat/webapps
 # set up jaas.conf 
 #
 mv ${FEDORA_HOME}/server/config/jaas.conf ${FEDORA_HOME}/server/config/jaas.conf-orig
-#
-# need to modify jaas.conf? 
-#
 cp drupal_filter/jaas.conf ${FEDORA_HOME}/server/config/jaas.conf
 
 #
 # install filter config
 #
-# does it need to be modified too? 
-cp drupal_filter/filter-drupal.xml ${FEDORA_HOME}/server/config/filter-drupal.xml
+cp ../etc/filter-drupal.xml $SRC_DIR/filter-drupal.xml
+sed -i "s/DATABASE_SERVER_TO_CHANGE/$DB_SERVER/g" $SRC_DIR/filter-drupal.xml
+sed -i "s/DRUPAL_DB_NAME_TO_CHANGE/$DRUPAL_DB_NAME/g" $SRC_DIR/filter-drupal.xml
+sed -i "s/DRUPAL_DB_PASSWORD_TO_CHANGE/$DRUPAL_DB_PASS/g" $SRC_DIR/filter-drupal.xml
+sed -i "s/DRUPAL_DB_USER_TO_CHANGE/$DRUPAL_DB_USER/g" $SRC_DIR/filter-drupal.xml
+sed -i "s/DRUPAL_DB_PREFIX_TO_CHANGE/$DRUPAL_DB_PREFIX/g" $SRC_DIR/filter-drupal.xml
+cp $SRC_DIR/filter-drupal.xml ${FEDORA_HOME}/server/config/filter-drupal.xml
 
 #
 # Change XACML policies
@@ -81,24 +83,4 @@ cp $WEB_ROOT/sites/all/modules/islandora-7.x-1.2/policies/permit-* ${FEDORA_HOME
 #
 # Proxy pass config https://wiki.duraspace.org/pages/viewpage.action?pageId=34658947
 #
-#cat apache-proxy-pass.cfg >> $WEB_ROOT/.htaccess
-#
-# contents of apache-proxy-pass.cfg
-#ProxyRequests Off 
-#ProxyPreserveHost On
-#<Proxy \*> 
-    #Order deny,allow 
-    #Allow from all 
-#</Proxy>
-#ProxyPass /fedora/get http://localhost:8080/fedora/get
-#ProxyPassReverse /fedora/get http://localhost:8080/fedora/get 
-#ProxyPass /fedora/services http://localhost:8080/fedora/services 
-#ProxyPassReverse /fedora/services http://localhost:8080/fedora/services 
-#ProxyPass /fedora/describe http://localhost:8080/fedora/describe 
-#ProxyPassReverse /fedora/describe http://localhost:8080/fedora/describe
-#ProxyPass /iiv http://localhost:8080/iiv
-#ProxyPassReverse /iiv http://localhost:8080/iiv
-#ProxyPass /fedora/risearch http://localhost:8080/fedora/risearch 
-#ProxyPassReverse /fedora/risearch http://localhost:8080/fedora/risearch
-#ProxyPass /adore-djatoka http://localhost:8080/adore-djatoka
-#ProxyPassReverse /adore-djatoka http://localhost:8080/adore-djatoka
+#cat ../etc/apache-proxy-pass.cfg >> $WEB_ROOT/.htaccess
