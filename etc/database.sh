@@ -19,6 +19,7 @@ export DRUPAL_DB_PASS="password"           	# Drupal password for settings.php f
 export DRUPAL_ADMIN_USER="IslandoraAdmin"       # Drupal admin username to log into Drupal Site
 export DRUPAL_ADMIN_PASS="pass"       		# Drupal admin password to log into Drupal Site
 export DRUPAL_SITE_NAME="Islandora Sandbox"     # Drupal site name - displayed on the web site
+export DRUPAL_DB_PREFIX="drup_"			# Drupal database prefix
 
 #---------------------------------------------
 #
