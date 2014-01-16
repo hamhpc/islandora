@@ -4,13 +4,13 @@
 #
 #---------------------------------------------
 #
-export FEDORA_HOME=/opt/fedora
-export FEDORA_USER=fedora
-export ISLANDORA_HOME=/opt/islandora
+export FEDORA_HOME=FEDORA_HOME_TO_CHANGE
+export FEDORA_USER=FEDORA_USER_TO_CHANGE
+export ISLANDORA_HOME=ISLANDORA_HOME_TO_CHANGE
 export ISLANDORA_PKGS=$ISLANDORA_HOME/packages
 export SRC_DIR=$ISLANDORA_HOME/src
 export CATALINA_HOME=$FEDORA_HOME/tomcat
-export SOLR_HOME=/opt/solr
+export SOLR_HOME=SOLR_HOME_TO_CHANGE
 export FEDORA_START=$CATALINA_HOME/bin/startup.sh
 export FEDORA_STOP=$CATALINA_HOME/bin/shutdown.sh
 #---------------------------------------------
@@ -19,7 +19,7 @@ export FEDORA_STOP=$CATALINA_HOME/bin/shutdown.sh
 #
 #---------------------------------------------
 #
-export JAVA_HOME=/usr/lib/jvm/java-1.6.0-openjdk-1.6.0.0.x86_64
+export JAVA_HOME=JAVA_HOME_TO_CHANGE
 export JRE_HOME=$JAVA_HOME/jre
 export JAVA_OPTS="-Xms1024m -Xmx1024m -XX:MaxPermSize=1200m -Djavax.net.ssl.trustStore=$FEDORA_HOME/server/truststore -Djavax.net.ssl.trustStorePassword=tomcat"
 #---------------------------------------------
