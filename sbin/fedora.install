@@ -34,13 +34,13 @@ sed -i "s/DATABASE_SERVER_TO_CHANGE/$DB_SERVER/g" $install_properties_file
 sed -i "s/DATABASE_NAME_TO_CHANGE/$FEDORA_DB_NAME/g" $install_properties_file
 sed -i "s/DATABASE_PASSWORD_TO_CHANGE/$FEDORA_DB_PASS/g" $install_properties_file
 sed -i "s/DATABASE_USER_TO_CHANGE/$FEDORA_DB_USER/g" $install_properties_file
-sed -i "s/CATALINA_HOME_TO_CHANGE/\/opt\/fedora\/tomcat/g" $install_properties_file
-sed -i "s/FEDORA_HOME_TO_CHANGE/\/opt\/fedora/g" $install_properties_file
+sed -i "s|CATALINA_HOME_TO_CHANGE|$CATALINA_HOME|g" $install_properties_file
+sed -i "s|FEDORA_HOME_TO_CHANGE|$FEDORA_HOME|g" $install_properties_file
 sed -i "s/FEDORA_ADMIN_PASS_TO_CHANGE/$FEDORA_ADMIN_PASS/g" $install_properties_file
 #
 ## Fresh fedora commons install
 #
-/usr/bin/java -jar fcrepo-installer-3.5.jar $install_properties_file
+${JAVA_HOME}/bin/java -jar fcrepo-installer-3.5.jar $install_properties_file
 
 # 
 # Start Fedora to get things populated
@@ -97,3 +97,6 @@ cp ${FEDORA_HOME}/tomcat/webapps/fedoragsearch/WEB-INF/classes/fgsconfigFinal/in
 #
 # set up a system startup init.d script to start fedora at boot
 #
+cp $ISLANDORA_HOME/etc/init.d-fedora /etc/init.d/fedora
+chkconfig --add fedora
+chkconfig fedora on
