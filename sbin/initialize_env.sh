@@ -11,6 +11,7 @@
 sed -i "s|FEDORA_HOME_TO_CHANGE|$FEDORA_HOME|g" ../etc/env.sh
 sed -i "s/FEDORA_USER_TO_CHANGE/$FEDORA_USER/g" ../etc/env.sh
 sed -i "s|ISLANDORA_HOME_TO_CHANGE|$ISLANDORA_HOME|g" ../etc/env.sh
+sed -i "s|ISLANDORA_HOME_TO_CHANGE|$ISLANDORA_HOME|g" ../etc/init.d-fedora
 sed -i "s|SOLR_HOME_TO_CHANGE|$SOLR_HOME|g" ../etc/env.sh
 sed -i "s|JAVA_HOME_TO_CHANGE|$JAVA_HOME|g" ../etc/env.sh
 
