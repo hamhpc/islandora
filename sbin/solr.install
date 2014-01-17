@@ -18,10 +18,12 @@
 #
 # install Solr
 #
+cd $SRC_DIR
 wget -N -P $SRC_DIR http://archive.apache.org/dist/lucene/solr/3.6.2/apache-solr-3.6.2.tgz
 tar -zxvf apache-solr-3.6.2.tgz
 cp apache-solr-3.6.2/example/webapps/solr.war ${FEDORA_HOME}/tomcat/webapps
 cp -r apache-solr-3.6.2/example/solr $SOLR_HOME
+sleep 60   # wait for war to load in fedora
 mv ${FEDORA_HOME}/tomcat/webapps/solr/WEB-INF/web.xml ${FEDORA_HOME}/tomcat/webapps/solr/WEB-INF/web.xml-orig
 cp ../etc/solr-web.xml ${FEDORA_HOME}/tomcat/webapps/solr/WEB-INF/web.xml
 #
