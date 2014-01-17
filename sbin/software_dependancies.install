@@ -5,6 +5,9 @@
 #
 # 1/9/2014 SLY
 
+# Source environment
+. ../etc/env.sh
+
 #
 # Install any other packages on the OS if needed
 #
@@ -36,11 +39,14 @@ yum -y install xpdf
 wget -N -P ../src http://v2v.cc/~j/ffmpeg2theora/ffmpeg2theora-0.29.linux64.bin
 install -m 755 ../src/ffmpeg2theora-0.29.linux64.bin /usr/bin/ffmpeg2theora
 #
+# create fedora user account
+#
+groupadd -r $FEDORA_USER
+useradd -c 'fedora user account' -g $FEDORA_USER -d $ISLANDORA_HOME -M -r -s /bin/bash $FEDORA_USER
+usermod -G fedora apache
+#
 # End of Operating System Software Setup
 #=======================================================
-
-# Source environment
-. ../etc/env.sh
 
 #
 # Install dependancy packages in islandora directory tree
