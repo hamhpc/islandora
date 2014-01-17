@@ -9,6 +9,7 @@
 . ../etc/env.sh
 . ../etc/database.sh
 
+cd $SRC_DIR
 #
 # Install islandora drupal modules
 #
