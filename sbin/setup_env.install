@@ -39,17 +39,17 @@ SOLR_HOME=$INSTALL_PREFIX/solr
 # database.sh
 #
 DRUPAL_ROOT=$WEB_ROOT/collections
-DRUPAL_DB_NAME="${USER}_drup2"          # Drupal database name
-DRUPAL_DB_USER="${USER}_drup2"          # Drupal username for settings.php file
-DRUPAL_DB_PASS="X[k[5zg)l3@~0"           # Drupal password for settings.php file
+DRUPAL_DB_NAME="db_name"          # Drupal database name
+DRUPAL_DB_USER="db_user"          # Drupal username for settings.php file
+DRUPAL_DB_PASS="db_pass"           # Drupal password for settings.php file
 DRUPAL_ADMIN_USER="IslandoraAdmin"       # Drupal admin username to log into Drupal Site
-DRUPAL_ADMIN_PASS="Islandora@dm1n"       # Drupal admin password to log into Drupal Site
+DRUPAL_ADMIN_PASS="pass"       # Drupal admin password to log into Drupal Site
 DRUPAL_SITE_NAME="Islandora Sandbox"     # Drupal site name - displayed on the web site
-FEDORA_DB_NAME="${USER}_fedora3"        # Name of fedora MySQL database -> fedora3 is recommeneded
-FEDORA_DB_USER="${USER}_fedora3"        # Fedora db username -> for fedora.fcfg file
-FEDORA_DB_PASS="Island0r@F3d0r@"         # Fedora db password -> for fedora.fcfg file
+FEDORA_DB_NAME="db_name"        # Name of fedora MySQL database -> fedora3 is recommeneded
+FEDORA_DB_USER="db_user"        # Fedora db username -> for fedora.fcfg file
+FEDORA_DB_PASS="db_pass"         # Fedora db password -> for fedora.fcfg file
 FEDORA_ADMIN_USER="fedoraAdmin"          # Username for http://localhost:8080/fedora/admin
-FEDORA_ADMIN_PASS="F3d0r@Adm1n"          # Password for http://localhost:8080/fedora/admin
+FEDORA_ADMIN_PASS="pass"          # Password for http://localhost:8080/fedora/admin
 DB_SERVER=localhost
 
 #
