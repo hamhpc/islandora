@@ -1,0 +1,42 @@
+#!/bin/bash
+
+#
+# Script to automatically Fedora Commons
+#
+# 1/9/2014 SLY
+
+# Assumptions:
+#
+#  - Databases are created in MySQL and you have DB names, users, and passwords for them. 
+#     ( one for Fedora Commons and one for Drupal )
+#
+#
+# Source environment
+. ../etc/env.sh
+. ../etc/database.sh
+
+#
+# install fedora gsearch
+#
+wget -N -P $SRC_DIR  http://downloads.sourceforge.net/fedora-commons/fedoragsearch-2.4.2.zip
+cd $SRC_DIR
+unzip fedoragsearch-2.4.2.zip
+cp fedoragsearch-2.4.2/fedoragsearch.war ${FEDORA_HOME}/tomcat/webapps/
+#
+# Install Gsearch user
+#
+mv ${FEDORA_HOME}/server/config/fedora-users.xml ${FEDORA_HOME}/server/config/fedora-users.xml-orig
+# modify the values to reflect this installation with sed
+cp ../etc/fedora-users.xml ${FEDORA_HOME}/server/config/
+
+#
+# set up Gsearch
+#
+# wget fgsconfig-basic.properties or modify it
+# modify the values to reflect this installation with sed
+cp ../etc/fgsconfig-basic.properties $FEDORA_HOME/tomcat/webapps/fedoragsearch/FgsConfig/
+#
+# build config
+#
+cd $FEDORA_HOME/tomcat/webapps/fedoragsearch/FgsConfig/
+ant -f fgsconfig-basic.xml

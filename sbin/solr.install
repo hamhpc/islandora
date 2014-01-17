@@ -1,0 +1,31 @@
+#!/bin/bash -x
+
+#
+# Script to automatically Fedora Commons
+#
+# 1/9/2014 SLY
+
+# Assumptions:
+#
+#  - Databases are created in MySQL and you have DB names, users, and passwords for them. 
+#     ( one for Fedora Commons and one for Drupal )
+#
+#
+# Source environment
+. ../etc/env.sh
+. ../etc/database.sh
+
+#
+# install Solr
+#
+wget -N -P $SRC_DIR http://archive.apache.org/dist/lucene/solr/3.6.2/apache-solr-3.6.2.tgz
+tar -zxvf apache-solr-3.6.2.tgz
+cp apache-solr-3.6.2/example/webapps/solr.war ${FEDORA_HOME}/tomcat/webapps
+cp -r apache-solr-3.6.2/example/solr $SOLR_HOME
+mv ${FEDORA_HOME}/tomcat/webapps/solr/WEB-INF/web.xml ${FEDORA_HOME}/tomcat/webapps/solr/WEB-INF/web.xml-orig
+cp ../etc/solr-web.xml ${FEDORA_HOME}/tomcat/webapps/solr/WEB-INF/web.xml
+#
+# setup solr schema
+#
+mv $SOLR_HOME/conf/schema.xml $SOLR_HOME/conf/schema.bak
+cp ${FEDORA_HOME}/tomcat/webapps/fedoragsearch/WEB-INF/classes/fgsconfigFinal/index/FgsIndex/conf/schema-3.6.0-for-fgs-2.4.2.xml $SOLR_HOME/conf/schema.xml
