@@ -7,25 +7,27 @@
 
 # Source environment
 . ../etc/env.sh
+. ../etc/database.sh
 
 #
 # Install islandora drupal modules
 #
 for URL in `cat ../etc/islandora_drupal.modules`
 do 
-	filename=`awk -F/ '{print $8}' $URL`
+	filename=`echo $URL | awk -F/ '{print $8}'`
 	wget -N -P $SRC_DIR $URL
-	unzip $filename -d $SITES_ALL_MODULES
+	unzip $filename -d $DRUPAL_ROOT/sites/all/modules
 	cd $SRC_DIR
 done
 #
 # Additional Drupal Modules
 #
+cd $SRC_DIR
 wget -N -P $SRC_DIR http://ftp.drupal.org/files/projects/libraries-7.x-2.1.tar.gz
-tar -zxvf -C $SITES_ALL_MODULES $SRC_DIR/libraries-7.x-2.1.tar.gz
+tar -zxvf $SRC_DIR/libraries-7.x-2.1.tar.gz -C $DRUPAL_ROOT/sites/all/modules
 #
 wget -N -P $SRC_DIR http://ftp.drupal.org/files/projects/imagemagick-7.x-1.0.zip
-unzip $SRC_DIR/imagemagick-7.x-1.0.zip -d $SITES_ALL_MODULES
+unzip $SRC_DIR/imagemagick-7.x-1.0.zip -d $DRUPAL_ROOT/sites/all/modules
 #
 #
 ## install jwplayer from source?
