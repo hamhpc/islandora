@@ -50,7 +50,7 @@ sleep 60
 #
 # Now stop fedora
 #
-pkill java
+#pkill java
 
 #
 # set up a system startup init.d script to start fedora at boot
