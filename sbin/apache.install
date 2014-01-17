@@ -1,0 +1,40 @@
+#!/bin/bash
+
+#
+# Script to automatically install apache
+#
+# 1/9/2014 SLY
+
+#
+#
+# Source environment
+. ../etc/env.sh
+. ../etc/database.sh
+
+#
+# install apache
+#
+yum -y install httpd
+
+#
+# change /etc/http.d/conf/httpd.conf
+#
+# update ServerAdmin email
+# update ServerName
+# update NameVirtualHost
+
+#
+# add in HOSTNAME.conf to /etc/httpd/conf.d
+#
+#cp ../etc/apache.conf /etc/httpd/conf.d/$SERVER_NAME.conf
+#update ServerAdmin email
+#update ServerName
+#update ServerAlias
+#update DocumentRoot
+
+#
+# start httpd
+#
+service httpd on
+service httpd start
+
