@@ -39,6 +39,7 @@ unzip $SRC_DIR/imagemagick-7.x-1.0.zip -d $DRUPAL_ROOT/sites/all/modules
 #
 # get drupal_filter
 #
+# deploy from github at https://github.com/Islandora/islandora_drupal_filter.git
 wget -N -P $SRC_DIR http://islandora.ca/sites/default/files/12.1.0/drupal_filter.tar.gz
 cd $SRC_DIR
 tar -zxvf drupal_filter.tar.gz
@@ -79,12 +80,6 @@ cp $WEB_ROOT/sites/all/modules/islandora-7.x-1.2/policies/permit-* ${FEDORA_HOME
 #
 # update policy manually
 #
-# Dont need localhost install
+# Dont need, localhost install
 #echo "Please make sure to update $FEDORA_HOME/data/fedora-xacml-policies/repository-policies/default/deny-apim-if-not-localhost.xml"
 #echo "Add <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">$IP_ADDR</AttributeValue> after the 127.0.0.1 line"
-
-
-#
-# Proxy pass config https://wiki.duraspace.org/pages/viewpage.action?pageId=34658947
-#
-#cat ../etc/apache-proxy-pass.cfg >> $WEB_ROOT/.htaccess
