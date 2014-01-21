@@ -38,3 +38,9 @@ cp ../etc/apache.conf /etc/httpd/conf.d/$SERVER_NAME.conf
 service httpd on
 service httpd start
 
+
+#
+# Proxy pass config https://wiki.duraspace.org/pages/viewpage.action?pageId=34658947
+#
+#cat ../etc/apache-proxy-pass.cfg >> $WEB_ROOT/.htaccess
+
