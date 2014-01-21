@@ -21,6 +21,15 @@ do
 	cd $SRC_DIR
 done
 #
+# Deploy from git instead... comment out loop above before enabling
+#
+#for URL in `cat ../etc/islandora_drupal.modules.git`
+#do 
+#       cd $DRUPAL_ROOT/sites/all/modules
+#	git clone $URL
+#done
+#
+#
 # Additional Drupal Modules
 #
 cd $SRC_DIR
@@ -34,8 +43,11 @@ unzip $SRC_DIR/imagemagick-7.x-1.0.zip -d $DRUPAL_ROOT/sites/all/modules
 ## install jwplayer from source?
 # 
 #
-#get a copy of https://github.com/Islandora/tuque put it in $SITES_ALL_LIB
-# https://github.com/Islandora/tuque.git
+#get a copy of https://github.com/Islandora/tuque put it in sites/all/lib
+#
+#mkdir -p $DRUPAL_ROOT/sites/all/lib
+#cd $DRUPAL_ROOT/sites/all/lib
+#git clone https://github.com/Islandora/tuque.git
 #
 # get drupal_filter
 #
