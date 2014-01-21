@@ -35,6 +35,7 @@ unzip $SRC_DIR/imagemagick-7.x-1.0.zip -d $DRUPAL_ROOT/sites/all/modules
 # 
 #
 #get a copy of https://github.com/Islandora/tuque put it in $SITES_ALL_LIB
+# https://github.com/Islandora/tuque.git
 #
 # get drupal_filter
 #
