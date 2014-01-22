@@ -1,6 +1,6 @@
 <?xml version='1.0' ?>
   <users>
-    <user name="FEDORA_ADMIN_USER_TO_CHANGE" password="FEDORA_PASSWORD_TO_CHANGE">
+    <user name="FEDORA_ADMIN_USER_TO_CHANGE" password="FEDORA_ADMIN_PASSWORD_TO_CHANGE">
       <attribute name="fedoraRole">
         <value>administrator</value>
       </attribute>
