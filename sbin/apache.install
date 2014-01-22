@@ -17,6 +17,11 @@
 yum -y install httpd
 
 #
+# Mke sure it's off
+#
+service httpd stop
+
+#
 # change /etc/http.d/conf/httpd.conf
 #
 sed -i 's/ServerAdmin root\@localhost/ServerAdmin $ADMIN_EMAIL/g' /etc/httpd/conf/httpd.conf
