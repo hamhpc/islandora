@@ -17,7 +17,7 @@
 yum -y install httpd
 
 #
-# Mke sure it's off
+# Make sure it's off
 #
 service httpd stop
 
