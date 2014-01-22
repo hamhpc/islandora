@@ -7,6 +7,7 @@
 export DB_SERVER=DATABASE_SERVER_TO_CHANGE			# hostname of the MySQL server
 export SERVER_NAME=SERVER_NAME_TO_CHANGE        # short hostname of this server 
 export FULL_SERVER_NAME=FULL_SERVER_NAME_TO_CHANGE  # full hostname of the server for the base apache server
+export ADMIN_EMAIL=ADMIN_EMAIL_TO_CHANGE            # name of admin email for drupal and apache configs
 
 #---------------------------------------------
 #
