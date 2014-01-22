@@ -28,6 +28,8 @@ sleep 60   # wait for war file to load in tomcat
 #
 mv ${FEDORA_HOME}/server/config/fedora-users.xml ${FEDORA_HOME}/server/config/fedora-users.xml-orig
 # modify the values to reflect this installation with sed
+sed -i 's/FEDORA_ADMIN_USER_TO_CHANGE/$FEDORA_ADMIN_USER/g'
+sed -i 's/FEDORA_ADMIN_PASSWORD_TO_CHANGE/$FEDORA_ADMIN_PASS/g'
 cp ../etc/fedora-users.xml ${FEDORA_HOME}/server/config/
 
 #
