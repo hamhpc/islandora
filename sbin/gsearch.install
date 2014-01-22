@@ -28,10 +28,10 @@ sleep 60   # wait for war file to load in tomcat
 #
 mv ${FEDORA_HOME}/server/config/fedora-users.xml ${FEDORA_HOME}/server/config/fedora-users.xml-orig
 # modify the values to reflect this installation with sed
-sed -i 's/FEDORA_ADMIN_USER_TO_CHANGE/$FEDORA_ADMIN_USER/g' ../etc/fedora-users.xml
-sed -i 's/FEDORA_ADMIN_PASSWORD_TO_CHANGE/$FEDORA_ADMIN_PASS/g' ../etc/fedora-users.xml
-sed -i 's/FEDORA_GSEARCH_ADMIN_USER_TO_CHANGE/$FEDORA_GSEARCH_ADMIN_USER/g' ../etc/fedora-users.xml
-sed -i 's/FEDORA_GSEARCH_ADMIN_PASS_TO_CHANGE/$FEDORA_GSEARCH_ADMIN_PASS/g' ../etc/fedora-users.xml
+sed -i s/FEDORA_ADMIN_USER_TO_CHANGE/$FEDORA_ADMIN_USER/g ../etc/fedora-users.xml
+sed -i s/FEDORA_ADMIN_PASSWORD_TO_CHANGE/$FEDORA_ADMIN_PASS/g ../etc/fedora-users.xml
+sed -i s/FEDORA_GSEARCH_ADMIN_USER_TO_CHANGE/$FEDORA_GSEARCH_ADMIN_USER/g ../etc/fedora-users.xml
+sed -i s/FEDORA_GSEARCH_ADMIN_PASS_TO_CHANGE/$FEDORA_GSEARCH_ADMIN_PASS/g ../etc/fedora-users.xml
 # install config file
 cp ../etc/fedora-users.xml ${FEDORA_HOME}/server/config/
 
@@ -39,11 +39,11 @@ cp ../etc/fedora-users.xml ${FEDORA_HOME}/server/config/
 # set up Gsearch
 #
 # modify the values to reflect this installation with sed
-sed -i 's/FGSADMIN_USER_TO_CHANGE/$FEDORA_GSEARCH_ADMIN_USER/g' ../etc/fgsconfig-basic.xml
-sed -i 's/FGSADMIN_PASS_TO_CHANGE/$FEDORA_GSEARCH_ADMIN_PASS/g' ../etc/fgsconfig-basic.xml
-sed -i 's/FEDORA_HOME_TO_CHANGE/$FEDORA_HOME/g' ../etc/fgsconfig-basic.xml
-sed -i 's/FEDORA_ADMIN_USER_TO_CHANGE/$FEDORA_ADMIN_USER/g' ../etc/fgsconfig-basic.xml
-sed -i 's/FEDORA_ADMIN_PASS_TO_CHANGE/$FEDORA_ADMIN_PASS/g' ../etc/fgsconfig-basic.xml
+sed -i s/FGSADMIN_USER_TO_CHANGE/$FEDORA_GSEARCH_ADMIN_USER/g ../etc/fgsconfig-basic.xml
+sed -i s/FGSADMIN_PASS_TO_CHANGE/$FEDORA_GSEARCH_ADMIN_PASS/g ../etc/fgsconfig-basic.xml
+sed -i s/FEDORA_HOME_TO_CHANGE/$FEDORA_HOME/g ../etc/fgsconfig-basic.xml
+sed -i s/FEDORA_ADMIN_USER_TO_CHANGE/$FEDORA_ADMIN_USER/g ../etc/fgsconfig-basic.xml
+sed -i s/FEDORA_ADMIN_PASS_TO_CHANGE/$FEDORA_ADMIN_PASS/g ../etc/fgsconfig-basic.xml
 # install the config file
 cp ../etc/fgsconfig-basic.properties $FEDORA_HOME/tomcat/webapps/fedoragsearch/FgsConfig/
 #
