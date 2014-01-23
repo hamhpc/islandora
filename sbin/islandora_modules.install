@@ -9,6 +9,11 @@
 . ../etc/env.sh
 . ../etc/database.sh
 
+#
+# Make sure fedora is running
+#
+service fedora start
+
 cd $SRC_DIR
 #
 # Install islandora drupal modules
