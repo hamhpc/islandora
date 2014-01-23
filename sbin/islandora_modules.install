@@ -30,7 +30,7 @@ done
 #done
 #
 #
-# Additional Drupal Modules (dont need installed with drupal and drush)
+# Additional Drupal Modules (dont need, installed with drupal and drush)
 #
 #cd $SRC_DIR
 #wget -N -P $SRC_DIR http://ftp.drupal.org/files/projects/libraries-7.x-2.1.tar.gz
