@@ -37,5 +37,6 @@ chmod g+w $DRUPAL_ROOT/sites/default/settings.php
 yum -y install php-pear
 pear channel-discover pear.drush.org
 pear install drush/drush
-
-
+#
+# Now do drush commands to get the core drupal server working
+#
