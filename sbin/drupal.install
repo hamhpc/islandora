@@ -41,6 +41,7 @@ mv /var/www/html/drupal-7.26/.* /var/www/html
 rm -rf /var/www/html/drupal-7.26
 chmod 755 /var/www/html
 
+cd $DRUPAL_ROOT
 drush site-install standard --account-name=$DRUPAL_ADMIN_USER --account-pass=$DRUPAL_ADMIN_PASS --db-url=mysql://$DRUPAL_DB_USER:$DRUPAL_DB_PASS@$DB_SERVER/$DRUPAL_DB_NAME
 
 #
@@ -70,6 +71,7 @@ drush dl -y pixture_reloaded
 ##########################################################
 #***we do need to enable the islandora pre-req modules ***
 ##########################################################
+cd $DRUPAL_ROOT
 drush en -y views
 drush en -y views_slideshow
 drush en -y views_slideshow_cycle
