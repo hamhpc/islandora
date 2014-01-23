@@ -46,3 +46,6 @@ islandora -		Top Level directory. The idea here is this directory
 			
 	- .bash_profile	This file is set up to source the whole environment if you set 
 			the home directory of the local fedora user to this location (ie. /opt/islandora).
+			
+			
+			
