@@ -92,6 +92,7 @@ cp $WEB_ROOT/sites/all/modules/islandora-7.x-1.2/policies/permit-* ${FEDORA_HOME
 #
 # drush commands to enable the modules and configure them
 # The below was borrowed from Williams drupal spinner code (https://github.com/Islandora-Collaboration-Group/drupalspinner.git)
+cd $DRUPAL_ROOT
 #############################################################################
 #***use drush vset to insert islandora credentials into the database***this evidently needs to be done BEFORE the islandora modules are enabled**
 #############################################################################
