@@ -38,7 +38,7 @@ islandora -		Top Level directory. The idea here is this directory
 			are built into. Source code is downloaded into the 
 			src directory (this gets created during the install) 
 			and compiled in src by declaring a ./configure --prefix=
-			/opt/islandora/packages/<package_name>-<package_version>.
+			/opt/islandora/packages/<package_name>-<version>.
 			From this packages directory structure each application 
 			is sym-linked into the /opt/islandora/<dir> directories. 
 			This way we only have to declare /opt/islandora/bin 
