@@ -52,3 +52,14 @@ cp ../etc/fgsconfig-basic.properties $FEDORA_HOME/tomcat/webapps/fedoragsearch/F
 #
 cd $FEDORA_HOME/tomcat/webapps/fedoragsearch/FgsConfig/
 ant -f fgsconfig-basic.xml
+
+# from gsearch admin page: you may edit it in repositoryInfo.xml, 
+# and it is displayed by the getRepositoryInfo operation with the 
+# adminGetRepositoryInfoToHtml.xslt stylesheet.
+#
+# Need to update this information
+# AdminInfo	The contents of this page is just an example, you may edit it in repositoryInfo.xml, and it is displayed by the getRepositoryInfo operation with the adminGetRepositoryInfoToHtml.xslt stylesheet.
+# RepositoryShortName	REPOSNAME
+# RepositoryLongName	Repository for REPOSNAME configuration
+# RepositoryDeveloper	Gert Schmeltz Pedersen, DTIC@DTU
+# RepositoryContact	gsp@dtic.dtu.dk
