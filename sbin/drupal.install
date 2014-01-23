@@ -17,7 +17,7 @@
 #
 # Install Drupal
 #
-wget -N -P $SRC_DIR http://ftp.drupal.org/files/projects/drupal-7.25.tar.gz
+wget -N -P $SRC_DIR http://ftp.drupal.org/files/projects/drupal-7.26.tar.gz
 cd $SRC_DIR
 tar -zxvf drupal-7.25.tar.gz 
 rsync -var --delete drupal-7.25/ $DRUPAL_ROOT
