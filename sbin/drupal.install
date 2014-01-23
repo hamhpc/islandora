@@ -21,3 +21,8 @@ wget -N -P $SRC_DIR http://ftp.drupal.org/files/projects/drupal-7.25.tar.gz
 cd $SRC_DIR
 tar -zxvf drupal-7.25.tar.gz 
 rsync -var --delete drupal-7.25/ $DRUPAL_ROOT
+#
+# massage the structure so we can run install.php
+#
+mkdir -p $DRUPAL_ROOT/sites/default/files
+chmod g+w $DRUPAL_ROOT/sites/default/files
