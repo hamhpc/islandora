@@ -35,10 +35,10 @@ pear install drush/drush
 #
 # Now do drush commands to get the core drupal server working
 #
+cd /var/www
+rm -rf html
 drush dl
-mv /var/www/html/drupal-7.26/* /var/www/html
-mv /var/www/html/drupal-7.26/.* /var/www/html
-rm -rf /var/www/html/drupal-7.26
+mv drupal-7.* /var/www/html
 chmod 755 /var/www/html
 
 cd $DRUPAL_ROOT
@@ -51,27 +51,24 @@ chmod -R 775 $DRUPAL_ROOT/sites/default/files
 
 
 #get dependencies
-cd $DRUPAL_ROOT/modules
+cd $DRUPAL_ROOT
 drush dl -y views
 drush dl -y ctools
 drush dl -y imagemagick
 drush dl -y admin_menu
 
 # reqs from aaron smith @ CM in support of phase 1 - common, configurable theme
-cd $DRUPAL_ROOT/modules
 drush dl -y features
 drush dl -y features_extra
 drush dl -y strongarm
 
 #get the theme. suggesting pixture_reloaded as the base theme because it's adaptive and works with color module.
-cd $DRUPAL_ROOT/themes
 drush dl -y adaptivetheme
 drush dl -y pixture_reloaded
 
 ##########################################################
 #***we do need to enable the islandora pre-req modules ***
 ##########################################################
-cd $DRUPAL_ROOT
 drush en -y views
 drush en -y views_slideshow
 drush en -y views_slideshow_cycle
