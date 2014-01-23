@@ -66,3 +66,6 @@ do
 	make install
 	cd $SRC_DIR
 done
+
+# link fits.sh 
+ln -s $ISLANDORA_HOME/packages/fits-0.6.2/fits.sh $ISLANDORA_HOME/bin/fits.sh
