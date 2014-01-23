@@ -142,30 +142,30 @@ drush vset islandora_use_kakadu "1"
 
 drush en -y islandora_ocr
 ##
-drush -l $island vset islandora_ocr_solr_hocr_highlighting_field "$ocr_text_solr_field"
-drush -l $island vset islandora_ocr_solr_hocr_highlighting_use_fas "$islandora_ocr_solr_hocr_highlighting_use_fast"
-drush -l $island vset islandora_ocr_solr_hocr_result_count "$solr_query_max_results"
-drush -l $island vset islandora_ocr_tesseract "$path_to_tesseract"
-drush -l  $island vset --format=json islandora_ocr_tesseract_enabled_languages "{'deu-frak':'$lang_deu_frak','eng':'$lang_eng','fra':'$lang_fra','ita':'$lang_ita','jpn':'$lang_jpn','por':'$lang_por','spa':'$lang_spa','dan-frak':'$lang_dan_frak','deu':'$lang_deu','hin':'$lang_hin','ita_old':'$lang_ita_old','rus':'$lang_rus','slk-frak':'$lang_slk_frak','spa_old':'$lang_spa_old'}"
+drush vset islandora_ocr_solr_hocr_highlighting_field "text_nodes_HOCR_hlt"
+drush vset islandora_ocr_solr_hocr_highlighting_use_fas "1"
+drush vset islandora_ocr_solr_hocr_result_count "32"
+drush vset islandora_ocr_tesseract "$ISLANDORA_HOME/bin/tesseract"
+drush vset --format=json islandora_ocr_tesseract_enabled_languages "{'deu-frak':'0','eng':'1','fra':'1','ita':'1','jpn':'1','por':'1','spa':'1','dan-frak':'0','deu':'0','hin':'0','ita_old':'0','rus':'0','slk-frak':'0','spa_old':'0'}"
 
 
 
-drush -l $island en -y islandora_openseadragon
+drush en -y islandora_openseadragon
 
-drush -l $island en -y islandora_paged_content
+drush en -y islandora_paged_content
 ##
-drush -l $island vset islandora_paged_content_gs "$path_to_ghostscript"
+drush vset islandora_paged_content_gs "/usr/bin/gs"
 
-drush -l $island en -y islandora_video
+drush en -y islandora_video
 ##
-drush -l $island vset islandora_video_ffmpeg2theora_path "$path_to_theora"
-drush -l $island vset islandora_video_ffmpeg_path "$path_to_ffmpeg"
-drush -l $island vset islandora_video_make_archive "$create_mkv"
-drush -l $island vset islandora_video_make_mp4_locally "$create_mp4"
-drush -l $island vset islandora_video_make_ogg_locally "$create_ocg"
-drush -l $island vset islandora_video_make_thumbnail_locally "$create_thumbnail"
-drush -l $island vset islandora_video_retain_original "$keep_originals_after_ingest"
-drush -l $island vset --format=json islandora_video_viewers '{"name":{"none":"none","$default_video_viewer":"$default_video_viewer"},"default":"$default_video_viewer"}'
+drush vset islandora_video_ffmpeg2theora_path "/usr/bin/ffmpeg2theora"
+drush vset islandora_video_ffmpeg_path "/usr/bin/ffmpeg"
+drush vset islandora_video_make_archive "1"
+drush vset islandora_video_make_mp4_locally "1"
+drush vset islandora_video_make_ogg_locally "1"
+drush vset islandora_video_make_thumbnail_locally "1"
+drush vset islandora_video_retain_original "1"
+drush vset --format=json islandora_video_viewers '{"name":{"none":"none","islandora_jwplayer":"islandora_jwplayer"},"default":"islandora_jwplayer"}'
 
 
 drush -l $island en -y islandora_xacml_api
