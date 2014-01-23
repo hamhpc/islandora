@@ -17,20 +17,15 @@
 #
 # Install Drupal
 #
-wget -N -P $SRC_DIR http://ftp.drupal.org/files/projects/drupal-7.26.tar.gz
-cd $SRC_DIR
-tar -zxvf drupal-7.25.tar.gz 
-rsync -var --delete drupal-7.25/ $DRUPAL_ROOT
-#
-# massage the structure so we can run install.php
-#
-mkdir -p $DRUPAL_ROOT/sites/default/files
-chmod g+w $DRUPAL_ROOT/sites/default/files
+#wget -N -P $SRC_DIR http://ftp.drupal.org/files/projects/drupal-7.26.tar.gz
+#cd $SRC_DIR
+#tar -zxvf drupal-7.25.tar.gz 
+#rsync -var --delete drupal-7.25/ $DRUPAL_ROOT
 #
 # create settings file
 #
-cp $DRUPAL_ROOT/sites/default/default.settings.php $DRUPAL_ROOT/sites/default/settings.php
-chmod g+w $DRUPAL_ROOT/sites/default/settings.php
+#cp $DRUPAL_ROOT/sites/default/default.settings.php $DRUPAL_ROOT/sites/default/settings.php
+#chmod g+w $DRUPAL_ROOT/sites/default/settings.php
 #
 # install drush
 #
@@ -40,3 +35,8 @@ pear install drush/drush
 #
 # Now do drush commands to get the core drupal server working
 #
+drush dl drupal-7.x
+drush site-install standard --account-name=admin --account-pass=admin --db-url=mysql://$DRUPAL_DB_USER:$DRUPAL_DB_PASS@$DB_SERVER/$DRUPAL_DB_NAME
+
+chmod 755 $DRUPAL_ROOT/sites/default
+chmod -R 775 $DRUPAL_ROOT/sites/default/files
