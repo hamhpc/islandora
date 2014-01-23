@@ -30,4 +30,5 @@ chmod g+w $DRUPAL_ROOT/sites/default/files
 # create settings file
 #
 cp $DRUPAL_ROOT/sites/default/default.settings.php $DRUPAL_ROOT/sites/default/settings.php
+chmod g+w $DRUPAL_ROOT/sites/default/settings.php
 
