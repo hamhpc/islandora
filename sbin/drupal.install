@@ -38,5 +38,62 @@ pear install drush/drush
 drush dl drupal-7.x
 drush site-install standard --account-name=admin --account-pass=admin --db-url=mysql://$DRUPAL_DB_USER:$DRUPAL_DB_PASS@$DB_SERVER/$DRUPAL_DB_NAME
 
+#
+# below taken from Williams Drupal Spinner code (https://github.com/Islandora-Collaboration-Group/drupalspinner.git)
 chmod 755 $DRUPAL_ROOT/sites/default
 chmod -R 775 $DRUPAL_ROOT/sites/default/files
+cd $DRUPAL_ROOT
+
+#get dependencies
+drush dl -y views
+drush dl -y ctools
+drush dl -y imagemagick
+drush dl -y admin_menu
+
+# reqs from aaron smith @ CM in support of phase 1 - common, configurable theme
+drush dl -y features
+drush dl -y features_extra
+drush dl -y strongarm
+
+#get the theme. suggesting pixture_reloaded as the base theme because it's adaptive and works with color module.
+drush dl -y adaptivetheme
+drush dl -y pixture_reloaded
+
+##########################################################
+#***we do need to enable the islandora pre-req modules ***
+##########################################################
+drush en -y views
+drush en -y views_slideshow
+drush en -y views_slideshow_cycle
+drush en -y views_ui
+drush en -y admin_menu
+
+drush en -y imagemagick
+##
+drush vset  imagemagick_convert "/usr/bin/convert"
+drush vset  image_jpeg_quality "75"
+drush vset  image_toolkit "imagemagick"
+# no graphicsmagick enable flag var? drush -l $island vset  "$"
+
+drush en -y libraries
+# no libraries vars found
+
+drush en -y quicktabs
+drush en -y quicktabs_tabstyles
+# no quicktabs vars found
+
+#############################################################################
+#***default theme settings
+#############################################################################
+
+#drush en -y pixture_reloaded_williams
+#drush vset theme_default pixture_reloaded_williams
+# NOTE: SETUPNOTE- this is (currently) specific to Williams college; ideally this would be a generic islandora-compatible theme that could be easily customized to your institution and each site/project
+# drush vset theme_settings --format=json '{"toggle_logo":1,"toggle_name":0,"toggle_slogan":0,"toggle_node_user_picture":0,"toggle_comment_user_picture":0,"toggle_comment_user_verification":0,"toggle_favicon":0,"toggle_main_menu":1,"toggle_secondary_menu":1,"default_logo":1,"logo_path":"","logo_upload":"","default_favicon":1,"favicon_path":"","favicon_upload":""}'
+#drush vset theme_seven_settings --format=json '{"toggle_logo":1,"toggle_name":0,"toggle_slogan":0,"toggle_node_user_picture":0,"toggle_comment_user_picture":0,"toggle_comment_user_verification":0,"toggle_favicon":1,"toggle_main_menu":1,"toggle_secondary_menu":1,"default_logo":1,"logo_path":"","logo_upload":"","default_favicon":1,"favicon_path":"","favicon_upload":""}'
+
+# drush en -y node_export_features
+drush en -y fe_block
+drush en -y strongarm
+
+
