@@ -11,32 +11,38 @@ It is assumed that you have created two MySQL databases. One for Drupal and one 
 
 This software branch is used in the installation of Islandora, fedora, drupal.
 
-It is called from a RedHat based kickstart server installer (https://github.com/hamhpc/kickstart/blob/master/ks_islandora.cfg)
+It is called from a RedHat based kickstart server installer 
+(https://github.com/hamhpc/kickstart/blob/master/ks_islandora.cfg)
 
 (note: you can comment out the kickstart portion of the above file and run it directly as a script). 
 
 Directory Contents
 -------------------
 
-islandora -		Top Level directory. The idea here is this directory holds all of the contents of the 
-			installation and has some well known directories within it (sbin,bin,etc,lib). It could be analogous to 
-			a /usr/local directory. 
+islandora -		Top Level directory. The idea here is this directory 
+			holds all of the contents of the installation and has 
+			some well known directories within it (sbin,bin,etc,lib). 
+			It could be analogous to a /usr/local directory. 
 
-	- bin 		Used to keep useful scripts for managing the repository. Also is where all the 
-			dependency packages are linked to. 
+	- bin 		Used to keep useful scripts for managing the repository. 
+			Also is where all the dependency packages are linked to. 
 			
-	- etc		This is where example config files and initial settings are stored. Most notably is 
-			the env.sh and database.sh files that declare variables for our installation of Islandora. 
+	- etc		This is where example config files and initial settings 
+			are stored. Most notably is the env.sh and database.sh files 
+			that declare variables for our installation of Islandora. 
 	
-	- packages	This is the directory where all dependency packages are built into. Source code is downloaded
-			into the src directory (this gets created during the install) and compiled in src by declaring 
-			a ./configure --prefix=/opt/islandora/packages/<package_name>-<package_version>. From this 
-			packages directory structure each application is sym-linked into the /opt/islandora/<dir> 
-			directories. This way we only have to declare /opt/islandora/bin and /opt/islandora/lib in the
-			environement variables but yet pick up all the applications we build manually. 
+	- packages	This is the directory where all dependency packages are built
+			into. Source code is downloaded into the src directory 
+			(this gets created during the install) and compiled in src by declaring a 
+			./configure --prefix=/opt/islandora/packages/<package_name>-<package_version>.
+			From this packages directory structure each application is sym-linked into the 
+			/opt/islandora/<dir> directories. This way we only have to declare 
+			/opt/islandora/bin and /opt/islandora/lib in the environement variables 
+			but yet pick up all the applications we build manually. 
 	
-	- sbin		This is where all the scripts to do the islandora installation are stored. Once the installation
-			is running you would generally just use bin to add in extra scripts as you develop them. 
+	- sbin		This is where all the scripts to do the islandora installation scripts
+			are stored. Once the installation is running you would generally just 
+			use bin to add in extra scripts as you develop them. 
 			
-	- .bash_profile	This file is set up to source the whole environment if you set the home directory of the local 
-			fedora user to this location (ie. /opt/islandora).
+	- .bash_profile	This file is set up to source the whole environment if you set 
+			the home directory of the local fedora user to this location (ie. /opt/islandora).
