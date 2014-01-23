@@ -42,6 +42,11 @@ sed -i "s/FEDORA_ADMIN_PASS_TO_CHANGE/$FEDORA_ADMIN_PASS/g" $install_properties_
 #
 ${JAVA_HOME}/bin/java -jar fcrepo-installer-3.5.jar $install_properties_file
 
+#
+# Edit fedora describe page
+#
+# Need to change values on :8080/fedora/describe page
+
 # 
 # Start Fedora to get things populated
 #
