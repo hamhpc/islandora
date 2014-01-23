@@ -32,3 +32,5 @@ sed -i "s/FEDORA_DB_USER_TO_CHANGE/$FEDORA_DB_USER/g" ../etc/database.sh
 sed -i "s/FEDORA_DB_PASS_TO_CHANGE/$FEDORA_DB_PASS/g" ../etc/database.sh
 sed -i "s/FEDORA_ADMIN_USER_TO_CHANGE/$FEDORA_ADMIN_USER/g" ../etc/database.sh
 sed -i "s/FEDORA_ADMIN_PASS_TO_CHANGE/$FEDORA_ADMIN_PASS/g" ../etc/database.sh
+sed -i "s/FGSADMIN_USER_TO_CHANGE/$FEDORA_GSEARCH_ADMIN_USER/g" ../etc/database.sh
+sed -i "s/FGSADMIN_PASS_TO_CHANGE/$FEDORA_GSEARCH_ADMIN_PASS/g" ../etc/database.sh
