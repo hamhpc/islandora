@@ -15,6 +15,8 @@
 # install apache
 #
 yum -y install httpd
+yum -y install php
+yum -y install php-pdo
 
 #
 # Make sure it's off
