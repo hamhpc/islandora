@@ -1,0 +1,9 @@
+#
+## Dependancy software installation of fits.sh
+#
+export PACKAGE_NAME=fits
+export PACKAGE_VERSION=0.6.2
+export PACKAGE_URL="https://fits.googlecode.com/files/fits-0.6.2.zip"
+export PACKAGE_UNCOMPRESS="unzip"
+export PACKAGE_TARFILE="fits-0.6.2.zip"
+export PACKAGE_DIR_UNCOMPRESSED=$PACKAGE_NAME-$PACKAGE_VERSION
