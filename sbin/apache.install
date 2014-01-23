@@ -20,6 +20,7 @@ yum -y install php-pdo
 yum -y install php-gd
 yum -y install php-mbstring
 yum -y install php-xml
+yum -y install php-mysql
 
 #
 # Make sure it's off
