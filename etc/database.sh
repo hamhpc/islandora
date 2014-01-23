@@ -35,3 +35,11 @@ export FEDORA_DB_USER="FEDORA_DB_USER_TO_CHANGE"        		# Fedora db username -
 export FEDORA_DB_PASS="FEDORA_DB_PASS_TO_CHANGE"         	# Fedora db password -> for fedora.fcfg file
 export FEDORA_ADMIN_USER="FEDORA_ADMIN_USER_TO_CHANGE"          # Username for http://localhost:8080/fedora/admin
 export FEDORA_ADMIN_PASS="FEDORA_ADMIN_PASS_TO_CHANGE"          	# Password for http://localhost:8080/fedora/admin
+#---------------------------------------------
+#
+# Fedora database info
+#
+#---------------------------------------------
+#
+export FEDORA_GSEARCH_ADMIN_USER="FGSADMIN_USER_TO_CHANGE"       		# Name of gsearch admin user
+export FEDORA_GSEARCH_ADMIN_PASS="FGSADMIN_PASS_TO_CHANGE"        		# gsearch admin password
