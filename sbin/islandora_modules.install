@@ -90,6 +90,10 @@ mkdir ${FEDORA_HOME}/data/fedora-xacml-policies/repository-policies/islandora
 cp $WEB_ROOT/sites/all/modules/islandora-7.x-1.2/policies/permit-* ${FEDORA_HOME}/data/fedora-xacml-policies/repository-policies/islandora
 
 #
+# drush commands to enable the modules and configure them
+#
+
+#
 # update policy manually
 #
 # Dont need, localhost install
