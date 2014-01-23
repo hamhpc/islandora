@@ -31,4 +31,11 @@ chmod g+w $DRUPAL_ROOT/sites/default/files
 #
 cp $DRUPAL_ROOT/sites/default/default.settings.php $DRUPAL_ROOT/sites/default/settings.php
 chmod g+w $DRUPAL_ROOT/sites/default/settings.php
+#
+# install drush
+#
+yum -y install php-pear
+pear channel-discover pear.drush.org
+pear install drush/drush
+
 
