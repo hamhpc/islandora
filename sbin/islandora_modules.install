@@ -30,14 +30,14 @@ done
 #done
 #
 #
-# Additional Drupal Modules
+# Additional Drupal Modules (dont need installed with drupal and drush)
 #
-cd $SRC_DIR
-wget -N -P $SRC_DIR http://ftp.drupal.org/files/projects/libraries-7.x-2.1.tar.gz
-tar -zxvf $SRC_DIR/libraries-7.x-2.1.tar.gz -C $DRUPAL_ROOT/sites/all/modules
+#cd $SRC_DIR
+#wget -N -P $SRC_DIR http://ftp.drupal.org/files/projects/libraries-7.x-2.1.tar.gz
+#tar -zxvf $SRC_DIR/libraries-7.x-2.1.tar.gz -C $DRUPAL_ROOT/sites/all/modules
 #
-wget -N -P $SRC_DIR http://ftp.drupal.org/files/projects/imagemagick-7.x-1.0.zip
-unzip $SRC_DIR/imagemagick-7.x-1.0.zip -d $DRUPAL_ROOT/sites/all/modules
+#wget -N -P $SRC_DIR http://ftp.drupal.org/files/projects/imagemagick-7.x-1.0.zip
+#unzip $SRC_DIR/imagemagick-7.x-1.0.zip -d $DRUPAL_ROOT/sites/all/modules
 #
 #
 ## install jwplayer from source?
@@ -45,9 +45,9 @@ unzip $SRC_DIR/imagemagick-7.x-1.0.zip -d $DRUPAL_ROOT/sites/all/modules
 #
 #get a copy of https://github.com/Islandora/tuque put it in sites/all/lib
 #
-#mkdir -p $DRUPAL_ROOT/sites/all/lib
-#cd $DRUPAL_ROOT/sites/all/lib
-#git clone https://github.com/Islandora/tuque.git
+mkdir -p $DRUPAL_ROOT/sites/all/lib
+cd $DRUPAL_ROOT/sites/all/lib
+git clone https://github.com/Islandora/tuque.git
 #
 # get drupal_filter
 #
@@ -91,7 +91,157 @@ cp $WEB_ROOT/sites/all/modules/islandora-7.x-1.2/policies/permit-* ${FEDORA_HOME
 
 #
 # drush commands to enable the modules and configure them
-#
+# The below was borrowed from Williams drupal spinner code (https://github.com/Islandora-Collaboration-Group/drupalspinner.git)
+#############################################################################
+#***use drush vset to insert islandora credentials into the database***this evidently needs to be done BEFORE the islandora modules are enabled**
+#############################################################################
+drush vset islandora_base_url "http://localhost:8080/fedora"
+drush vset islandora_repository_pid "islandora:root"
+drush vset islandora_namespace_restriction_enforced 1
+
+#############################################################################
+#***enable islandora and other modules (plus related settings) for each individual island***
+#############################################################################
+drush en -y islandora
+
+drush en -y php_lib
+drush en -y objective_forms
+drush en -y xml_form_api, xml_form_builder, xml_form_elements, xml_schema_api
+drush en -y islandora_basic_image
+drush en -y xml_forms
+
+drush en -y islandora_audio
+##
+drush vset --format=json islandora_audio_viewers '{"name":{"none":"none","$default_audio_viewer":"$default_audio_viewer"},"default":"$default_audio_viewer"}'
+drush vset islandora_lame_url "$ISLANDORA_HOME/bin/lame"
+
+drush en -y islandora-importer
+drush en -y islandora-batch
+drush en -y islandora-book-batch
+# FIX NOTE: some batch stuff not enabled: "Islandora Batch", "Islandora Book Batch"
+drush en -y islandora-book
+##
+drush vset --format=json islandora_book_ingest_derivatives '{"pdf":"pdf","image":"image","ocr":"ocr"}'
+drush vset --format=json islandora_book_page_viewers '{"name":{"none":"none","islandora_openseadragon":"islandora_openseadragon"},"default":"islandora_openseadragon"}'
+drush vset islandora_book_parent_book_solr_field "RELS_EXT_isMemberOf_uri_ms"
+drush vset islandora_book_tesseract "$ISLANDORA_HOME/bin/tesseract"
+drush vset --format=json islandora_book_viewers '{"name":{"none":"none","islandora_internet_archive_bookreader":"islandora_internet_archive_bookreader"},"default":"islandora_internet_archive_bookreader"}'
+
+drush en -y islandora-bookmark
+# FIX NOTE: islandora-bookmark not enabled
+
+drush en -y islandora_internet_archive_bookreader
+drush en -y islandora_jwplayer
+
+drush en -y islandora_large_image
+##
+drush vset islandora_kakadu_url "/usr/bin/kdu_compress"
+drush vset --format=json islandora_large_image_viewers '{"name":{"none":"none","islandora_openseadragon":"islandora_openseadragon"},"default":"islandora_openseadragon"}'
+drush vset islandora_use_kakadu "1"
+# FIX NOTE: default setting for viewer is NOT working
+
+drush en -y islandora_ocr
+##
+drush -l $island vset islandora_ocr_solr_hocr_highlighting_field "$ocr_text_solr_field"
+drush -l $island vset islandora_ocr_solr_hocr_highlighting_use_fas "$islandora_ocr_solr_hocr_highlighting_use_fast"
+drush -l $island vset islandora_ocr_solr_hocr_result_count "$solr_query_max_results"
+drush -l $island vset islandora_ocr_tesseract "$path_to_tesseract"
+drush -l  $island vset --format=json islandora_ocr_tesseract_enabled_languages "{'deu-frak':'$lang_deu_frak','eng':'$lang_eng','fra':'$lang_fra','ita':'$lang_ita','jpn':'$lang_jpn','por':'$lang_por','spa':'$lang_spa','dan-frak':'$lang_dan_frak','deu':'$lang_deu','hin':'$lang_hin','ita_old':'$lang_ita_old','rus':'$lang_rus','slk-frak':'$lang_slk_frak','spa_old':'$lang_spa_old'}"
+
+
+
+drush -l $island en -y islandora_openseadragon
+
+drush -l $island en -y islandora_paged_content
+##
+drush -l $island vset islandora_paged_content_gs "$path_to_ghostscript"
+
+drush -l $island en -y islandora_video
+##
+drush -l $island vset islandora_video_ffmpeg2theora_path "$path_to_theora"
+drush -l $island vset islandora_video_ffmpeg_path "$path_to_ffmpeg"
+drush -l $island vset islandora_video_make_archive "$create_mkv"
+drush -l $island vset islandora_video_make_mp4_locally "$create_mp4"
+drush -l $island vset islandora_video_make_ogg_locally "$create_ocg"
+drush -l $island vset islandora_video_make_thumbnail_locally "$create_thumbnail"
+drush -l $island vset islandora_video_retain_original "$keep_originals_after_ingest"
+drush -l $island vset --format=json islandora_video_viewers '{"name":{"none":"none","$default_video_viewer":"$default_video_viewer"},"default":"$default_video_viewer"}'
+
+
+drush -l $island en -y islandora_xacml_api
+drush -l $island en -y islandora_xacml_editor
+drush -l $island en -y willdora
+drush -l $island en -y zip_importer
+
+drush -l $island en -y islandora_pdf
+##
+drush -l $island vset islandora_pdf_allow_text_upload "$allow_upload_text_with_pdf"
+drush -l $island vset islandora_pdf_create_fulltext "$store_extracted_text"
+drush -l $island vset islandora_pdf_path_to_pdftotext "$path_pdftotext"
+drush -l $island vset islandora_pdf_preview_height "$preview_max_height"
+drush -l $island vset islandora_pdf_preview_width "$preview_max_width"
+drush -l $island vset islandora_pdf_thumbnail_height "$thumbnail_height"
+drush -l $island vset islandora_pdf_thumbnail_width "$thumbnail_width"
+
+drush -l $island en -y islandora_basic_collection
+
+drush -l $island en -y islandora_solr
+drush -l $island en -y islandora_solr_config
+drush -l $island en -y islandora_solr_views
+##
+drush -l $island vset islandora_solr_base_filter "$solr_base_filter"
+drush -l $island vset islandora_solr_base_query "$solr_base_query"
+drush -l $island vset islandora_solr_base_sort "$solr_base_sort"
+drush -l $island vset islandora_solr_content_model_field "$solr_content_model_field"
+drush -l $island vset islandora_solr_datastream_id_field "$solr_datastream_id_field"
+drush -l $island vset islandora_solr_debug_mode "$solr_debug_mode"
+drush -l $island vset islandora_solr_dismax_allowed "$solr_dismax_allowed"
+drush -l $island vset islandora_solr_facet_max_limit "$solr_facet_max_limit"
+drush -l $island vset islandora_solr_facet_min_limit "$solr_facet_min_limit"
+drush -l $island vset islandora_solr_facet_soft_limit "$solr_facet_soft_limit"
+drush -l $island vset islandora_solr_limit_result_fields "$solr_limit_result_fields"
+drush -l $island vset islandora_solr_namespace_restriction "$solr_namespace_restriction"
+drush -l $island vset islandora_solr_num_of_results "$solr_num_of_results"
+drush -l $island vset islandora_solr_object_label_field "$solr_object_label_field"
+drush -l $island vset islandora_solr_primary_display "$solr_primary_display"
+drush -l $island vset islandora_solr_primary_display_table --format=json '{"weight":{"bookmark":"0","default":"0","grid":"0","table":"0"},"default":"default","enabled":{"bookmark":0,"default":"default","grid":0,"table":0}}'
+drush -l $island vset islandora_solr_query_fields "$solr_query_fields"
+drush -l $island vset islandora_solr_request_handler "$solr_req_handler"
+drush -l $island vset islandora_solr_search_boolean "$solr_search_boolean"
+drush -l $island vset islandora_solr_secondary_display --format=json '{"csv":0}'
+drush -l $island vset islandora_solr_tabs__active_tab "$solr_tabs__active_tab"
+drush -l $island vset islandora_solr_url "$solr_url"
+
+
+
+drush -l $island vset islandora_tabs__active_tab "$tabs__active_tab"
+
+
+drush -l $island en -y islandora_fits
+##
+drush -l $island vset islandora_fits_executable_path "$path_to_fits"
+drush -l $island vset islandora_fits_techmd_dsid "$dsid_tech_meta"
+
+drush -l $island en -y islandora_simple_workflow
+
+drush -l $island en -y nice_menus
+##
+drush -l $island vset nice_menus_depth_1 $nice_menu_depth
+drush -l $island vset  nice_menus_js $nice_menu_use_nice_menu_js
+drush -l $island vset nice_menus_menu_1 $nice_menu_menu_comp_name
+drush -l $island vset nice_menus_name_1 $nice_menu_menu_human_name
+drush -l $island vset nice_menus_number $nice_menu_num_nice_menu_blocks
+drush -l $island vset nice_menus_sf_delay $nice_menu_mouse_delay
+drush -l $island vset nice_menus_sf_speed $nice_menu_animation_speed
+drush -l $island vset nice_menus_type_1 $nice_menu_type
+
+
+drush -l $island en -y googleanalytics
+##
+drush -l $island vset googleanalytics_account $googleanalytics_web_property_id
+# NOTE: other google analytics settings just use the defaults
+
+drush -l $island vset islandora_batch_java "$path_to_java"
 
 #
 # update policy manually
