@@ -31,5 +31,5 @@ make
 make install
 cd /opt/islandora/packages/package_name-package_version/
 cp ../Makefile .
-../../sbin/create_.sh
+../../sbin/create_package_makefile.sh
 make install
