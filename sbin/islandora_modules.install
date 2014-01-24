@@ -22,7 +22,7 @@ for URL in `cat ../etc/islandora_drupal.modules`
 do 
 	filename=`echo $URL | awk -F/ '{print $8}'`
 	wget -N -P $SRC_DIR $URL
-	unzip $filename -d $DRUPAL_ROOT/sites/all/modules
+	unzip -o $filename -d $DRUPAL_ROOT/sites/all/modules
 	cd $SRC_DIR
 done
 #
