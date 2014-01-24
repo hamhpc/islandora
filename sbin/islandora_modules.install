@@ -48,11 +48,12 @@ done
 ## install jwplayer from source?
 # 
 #
-#get a copy of https://github.com/Islandora/tuque put it in sites/all/lib
+# put stuff in sites/all/libraries
 #
 mkdir -p $DRUPAL_ROOT/sites/all/libraries
 cd $DRUPAL_ROOT/sites/all/libraries
 git clone https://github.com/Islandora/tuque.git
+git clone https://github.com/thatcher/openseadragon.git
 #
 # get drupal_filter
 #
