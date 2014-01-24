@@ -1,0 +1,11 @@
+
+This is the packages directory. 
+
+Initially this will be empty except for the Makefile. 
+
+This is how we compile in source code software and integrate
+it into the software stack. At inital install it does a few
+packages like lame, tesseract, leptonica, fits. Each package 
+has a config file stored in islandora/etc/packages. It looks 
+something like this: 
+
