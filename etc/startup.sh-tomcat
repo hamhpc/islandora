@@ -61,7 +61,7 @@ else
   fi
 fi 
 
-. $ISLANDORA_PKGS/adore-djatoka-1.1/bin/env.sh
+. /opt/islandora/packages/adore-djatoka-1.1/bin/env.sh
 export JAVA_OPTS
 echo $JAVA_OPTS
 echo $FEDORA_HOME
