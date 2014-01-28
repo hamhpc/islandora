@@ -47,7 +47,7 @@ cp ../etc/apache.conf /etc/httpd/conf.d/$SERVER_NAME.conf
 #
 # start httpd
 #
-service httpd on
+chkconfig httpd on
 service httpd start
 
 
