@@ -25,5 +25,7 @@ chmod -R 755 ${ISLANDORA_HOME}
 chmod -R 755 ${FEDORA_HOME} 
 chmod 755 /etc/init.d/fedora
 chmod -R 640 ${ISLANDORA_HOME}/etc
+chmod 755 ${ISLANDORA_HOME}/etc
+chmod -R 644 ${ISLANDORA_HOME}/etc/env.sh
 chmod -R 755 $DRUPAL_ROOT
 chmod -R 775 $DRUPAL_ROOT/sites/default/files
