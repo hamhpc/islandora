@@ -72,6 +72,11 @@ drush dl -y pixture_reloaded
 drush en -y views
 drush en -y views_slideshow
 drush en -y views_slideshow_cycle
+# Module views_slideshow_cycle doesn't meet the requirements to be enabled.                                                                                                [error]
+# You need to install the jQuery cycle plugin. 
+# Create a directory in sites/all/libraries called jquery.cycle, and then copy jquery.cycle.all.min.js or jquery.cycle.all.js [error]
+# into it. You can find the plugin at http://malsup.com/jquery/cycle. (Currently using jQuery Cycle Library Library required for Views Slideshow Cycle)
+
 drush en -y views_ui
 drush en -y admin_menu
 
