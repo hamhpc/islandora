@@ -31,3 +31,7 @@ cp ../etc/solr-web.xml ${FEDORA_HOME}/tomcat/webapps/solr/WEB-INF/web.xml
 #
 mv $SOLR_HOME/conf/schema.xml $SOLR_HOME/conf/schema.bak
 cp ${FEDORA_HOME}/tomcat/webapps/fedoragsearch/WEB-INF/classes/fgsconfigFinal/index/FgsIndex/conf/schema-3.6.0-for-fgs-2.4.2.xml $SOLR_HOME/conf/schema.xml
+
+# 
+# Setup Solr logging
+#
