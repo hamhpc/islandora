@@ -46,6 +46,10 @@ ${JAVA_HOME}/bin/java -jar fcrepo-installer-3.5.jar $install_properties_file
 # Edit fedora describe page
 #
 # Need to change values on :8080/fedora/describe page in $FEDORA_HOME/server/config/fedora.fcfg
+# change httpClientMaxConnectionsPerHost from 5 to 25
+# change pidNamespace
+# indexDCFields - turn off since using solr
+
 
 # 
 # Update datastore structure in $FEDORA_HOME/server/config/spring/akubra-llstore.xml
