@@ -38,3 +38,10 @@ cp ${FEDORA_HOME}/tomcat/webapps/fedoragsearch/WEB-INF/classes/fgsconfigFinal/in
 #mv $CATALINA_HOME/webapps/solr/WEB-INF/classes/log4j.properties $CATALINA_HOME/webapps/solr/WEB-INF/classes/log4j.properties-orig
 mkdir -p $CATALINA_HOME/webapps/solr/WEB-INF/classes
 cp ../etc/log4j.properties-solr $CATALINA_HOME/webapps/solr/WEB-INF/classes/log4j.properties
+
+# 
+# add in ICU (unicode support)
+# 
+# add in ICU class libraries from dist/contrib
+# in schema.xml after solr.LowerCaseFilterFactory add  <filter class=“solr.ICUFoldingFilterFactory”/>
+# 
