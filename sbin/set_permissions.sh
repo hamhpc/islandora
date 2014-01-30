@@ -1,4 +1,5 @@
 #!/bin/bash -x
+
 #
 # Script to set permissions
 #
