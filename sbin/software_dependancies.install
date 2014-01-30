@@ -51,9 +51,12 @@ usermod -G fedora apache
 #
 # Install dependancy packages in islandora directory tree
 #
-for PKG in `find ../etc/packages -name "*.package" -print`
+# leptonica needs to install before tesseract (find doesn't present the files alphabetically where ls should)
+#for PKG in `find ../etc/packages -name "*.package" -print`
+for PKG in `ls ../etc/packages | grep .package`
 do
-	. $PKG
+	#. $PKG
+	. ../etc/packages/$PKG
 	wget -N -P $SRC_DIR $PACKAGE_URL
 	cd $SRC_DIR
 	$PACKAGE_UNCOMPRESS $PACKAGE_TARFILE
