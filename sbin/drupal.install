@@ -65,6 +65,8 @@ drush dl -y strongarm
 #get the theme. suggesting pixture_reloaded as the base theme because it's adaptive and works with color module.
 drush dl -y adaptivetheme
 drush dl -y pixture_reloaded
+drush dl -y bootstrap
+drush dl -y jquery_update
 
 ##########################################################
 #***we do need to enable the islandora pre-req modules ***
