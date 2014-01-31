@@ -112,4 +112,6 @@ drush en -y quicktabs_tabstyles
 drush en -y fe_block
 drush en -y strongarm
 
+drush update
+
 
