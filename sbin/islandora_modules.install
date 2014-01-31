@@ -254,6 +254,11 @@ drush en -y islandora_simple_workflow
 drush vset islandora_batch_java "$JAVA_HOME/bin/java"
 
 #
+# update drupal
+#
+drush update 
+
+#
 # update policy manually
 #
 # Dont need, localhost install
