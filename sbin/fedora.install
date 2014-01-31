@@ -56,6 +56,10 @@ ${JAVA_HOME}/bin/java -jar fcrepo-installer-3.5.jar $install_properties_file
 #
 # change  <constructor-arg value="##" /> to <constructor-arg value=“##/##” /> for fsObjectStoreMapper and fsDatastreamStoreMapper
 
+#
+# set permissions
+# 
+chown -R $FEDORA_USER:$FEDORA_USER $FEDORA_HOME
 # 
 # Start Fedora to get things populated
 #
