@@ -47,7 +47,8 @@ usermod -G fedora apache
 #
 # set permission on INSTALL_DIR
 #
-chmod 775 $INSTALL_PREFIX
+#chmod 775 $INSTALL_PREFIX # change below to this but need to have INSTALL_PREFIX in env.sh first
+chmod 775 /opt
 #
 # End of Operating System Software Setup
 #=======================================================
