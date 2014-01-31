@@ -1,7 +1,7 @@
 #
 ## Tesseract installation
 #
-export PACKAGE_NAME=tesseract-ocr
+export PACKAGE_NAME=tesseract
 export PACKAGE_VERSION=3.02.02
 export PACKAGE_URL="https://tesseract-ocr.googlecode.com/files/tesseract-ocr-3.02.02.tar.gz"
 export PACKAGE_UNCOMPRESS="tar -zxvf "
