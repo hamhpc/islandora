@@ -22,8 +22,8 @@ if [ -f /etc/init.d/functions ]; then
      . /etc/init.d/functions
 fi
 
-if [ -f ISLANDORA_HOME_TO_CHANGE/etc/env.sh ] ; then
-  . ISLANDORA_HOME_TO_CHANGE/etc/env.sh
+if [ -f /opt/islandora/etc/env.sh ] ; then
+  . /opt/islandora/etc/env.sh
 fi
 
 #ping mysql (network incase not on this box) with CORRECT creds... to know if it is running wait 5 try 3 fail
