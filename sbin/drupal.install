@@ -81,6 +81,8 @@ drush en -y views_slideshow_cycle
 
 drush en -y views_ui
 drush en -y admin_menu
+drush en -y bootstrap
+drush en -y jquery_update
 
 drush en -y imagemagick
 ##
