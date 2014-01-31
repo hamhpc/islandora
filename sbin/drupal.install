@@ -42,7 +42,7 @@ mv drupal-7.* /var/www/html
 chmod 755 /var/www/html
 
 cd $DRUPAL_ROOT
-drush site-install standard -y --site-name "Collections Repository Server" --account-mail=$ADMIN_EMAIL --account-name=$DRUPAL_ADMIN_USER --account-pass=$DRUPAL_ADMIN_PASS --db-url=mysql://$DRUPAL_DB_USER:$DRUPAL_DB_PASS@$DB_SERVER/$DRUPAL_DB_NAME
+drush site-install standard -y --site-name="Collections Repository Server" --account-mail=$ADMIN_EMAIL --account-name=$DRUPAL_ADMIN_USER --account-pass=$DRUPAL_ADMIN_PASS --db-url=mysql://$DRUPAL_DB_USER:$DRUPAL_DB_PASS@$DB_SERVER/$DRUPAL_DB_NAME
 
 #
 # below taken from Williams Drupal Spinner code (https://github.com/Islandora-Collaboration-Group/drupalspinner.git)
