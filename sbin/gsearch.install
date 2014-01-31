@@ -21,6 +21,7 @@
 wget -N -P $SRC_DIR  http://downloads.sourceforge.net/fedora-commons/fedoragsearch-2.4.2.zip
 cd $SRC_DIR
 unzip fedoragsearch-2.4.2.zip
+chown -R $FEDORA_USER:$FEDORA_USER fedoragsearch-2.4.2
 cp fedoragsearch-2.4.2/fedoragsearch.war ${FEDORA_HOME}/tomcat/webapps/
 sleep 60   # wait for war file to load in tomcat
 #
@@ -33,6 +34,7 @@ sed -i s/FEDORA_ADMIN_PASSWORD_TO_CHANGE/$FEDORA_ADMIN_PASS/g ../etc/fedora-user
 sed -i s/FEDORA_GSEARCH_ADMIN_USER_TO_CHANGE/$FEDORA_GSEARCH_ADMIN_USER/g ../etc/fedora-users.xml
 sed -i s/FEDORA_GSEARCH_ADMIN_PASS_TO_CHANGE/$FEDORA_GSEARCH_ADMIN_PASS/g ../etc/fedora-users.xml
 # install config file
+chown $FEDORA_USER:$FEDORA_USER ../etc/fedora-users.xml
 cp ../etc/fedora-users.xml ${FEDORA_HOME}/server/config/
 
 #
@@ -46,12 +48,14 @@ sed -i "s|FEDORA_HOME_TO_CHANGE|$FEDORA_HOME|g" ../etc/fgsconfig-basic.propertie
 sed -i s/FEDORA_ADMIN_USER_TO_CHANGE/$FEDORA_ADMIN_USER/g ../etc/fgsconfig-basic.properties
 sed -i s/FEDORA_ADMIN_PASS_TO_CHANGE/$FEDORA_ADMIN_PASS/g ../etc/fgsconfig-basic.properties
 # install the config file
+chown $FEDORA_USER:$FEDORA_USER ../etc/fgsconfig-basic.properties
 cp ../etc/fgsconfig-basic.properties $FEDORA_HOME/tomcat/webapps/fedoragsearch/FgsConfig/
 #
 # build config
 #
 cd $FEDORA_HOME/tomcat/webapps/fedoragsearch/FgsConfig/
 ant -f fgsconfig-basic.xml
+chown -R $FEDORA_USER:$FEDORA_USER $FEDORA_HOME
 
 # from gsearch admin page: you may edit it in repositoryInfo.xml, 
 # and it is displayed by the getRepositoryInfo operation with the 
