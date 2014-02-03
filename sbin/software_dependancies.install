@@ -56,7 +56,6 @@ chmod 775 /opt
 # Needed for tesseract to find leptonica
 #
 export LIBLEPT_HEADERSDIR=/opt/islandora/packages/leptonica-1.69/include
-#./configure --prefix=/opt/islandora/packages/tesseract-3.02.02 --with-extra-libraries=/opt/islandora/lib
 
 #
 # Install dependancy packages in islandora directory tree
