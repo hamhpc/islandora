@@ -52,6 +52,11 @@ chmod 775 /opt
 #
 # End of Operating System Software Setup
 #=======================================================
+#
+# Needed for tesseract to find leptonica
+#
+export LIBLEPT_HEADERSDIR=/opt/islandora/packages/leptonica-1.69/include
+#./configure --prefix=/opt/islandora/packages/tesseract-3.02.02 --with-extra-libraries=/opt/islandora/lib
 
 #
 # Install dependancy packages in islandora directory tree
@@ -66,7 +71,7 @@ do
 	cd $SRC_DIR
 	$PACKAGE_UNCOMPRESS $PACKAGE_TARFILE
 	cd $PACKAGE_DIR_UNCOMPRESSED
-	./configure --prefix=$ISLANDORA_PKGS/$PACKAGE_NAME-$PACKAGE_VERSION
+	./configure --prefix=$ISLANDORA_PKGS/$PACKAGE_NAME-$PACKAGE_VERSION $EXTRA_CONFIGURE_ARGS
 	make
 	make install
 	cd $ISLANDORA_PKGS/$PACKAGE_NAME-$PACKAGE_VERSION
