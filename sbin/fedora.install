@@ -40,7 +40,7 @@ sed -i "s/FEDORA_ADMIN_PASS_TO_CHANGE/$FEDORA_ADMIN_PASS/g" $install_properties_
 #
 # Drop DB first or you'll have problems with drupal-filter. 
 #
-mysqladmin -f -h $DB_SERVER -u $FEDORA_DB_USER -p$FEDORA_DB_PASS drop $FEDORA_DB_NAME
+#mysqladmin -f -h $DB_SERVER -u $FEDORA_DB_USER -p$FEDORA_DB_PASS drop $FEDORA_DB_NAME
 #
 ## Fresh fedora commons install
 #
