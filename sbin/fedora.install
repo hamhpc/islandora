@@ -38,6 +38,10 @@ sed -i "s|CATALINA_HOME_TO_CHANGE|$CATALINA_HOME|g" $install_properties_file
 sed -i "s|FEDORA_HOME_TO_CHANGE|$FEDORA_HOME|g" $install_properties_file
 sed -i "s/FEDORA_ADMIN_PASS_TO_CHANGE/$FEDORA_ADMIN_PASS/g" $install_properties_file
 #
+# Drop DB first or you'll have problems with drupal-filter. 
+#
+mysqladmin -f -h $DB_SERVER -u $FEDORA_DB_USER -p$FEDORA_DB_PASS drop $FEDORA_DB_NAME
+#
 ## Fresh fedora commons install
 #
 ${JAVA_HOME}/bin/java -jar fcrepo-installer-3.5.jar $install_properties_file
