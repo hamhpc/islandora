@@ -14,7 +14,7 @@
 cd $SRC_DIR
 wget -N -P $SRC_DIR http://repo1.maven.org/maven2/org/duraspace/fcrepo-cloudsync/fcrepo-cloudsync-service/1.1.0/fcrepo-cloudsync-service-1.1.0.war
 chown -R $FEDORA_USER:$FEDORA_USER fcrepo-cloudsync-service-1.1.0.war
+mkdir $INSTALL_PREFIX/cloudsync
 cp fcrepo-cloudsync-service-1.1.0.war ${FEDORA_HOME}/tomcat/webapps
 sleep 10   # wait for war to load in fedora
-mkdir $INSTALL_PREFIX/cloudsync
 echo "cloudsync.home = $INSTALL_PREFIX/cloudsync" >> $CATALINA_HOME/webapps/fcrepo-cloudsync-service-1.1.0/WEB-INF/classes/cloudsync.properties
